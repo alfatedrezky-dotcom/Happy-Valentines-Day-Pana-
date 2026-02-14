@@ -3,239 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Pana 💖</title>
+<title>Valentine Blue Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-overflow:hidden;
-background:linear-gradient(135deg,#ff1e56,#ff4d6d,#c77dff,#7209b7,#3a0ca3);
-background-size:400% 400%;
-animation:bg 15s ease infinite;
-color:white;
-position:relative;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* GLOW */
-body::before{
-content:"";
-position:fixed;
-width:700px;
-height:700px;
-background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 70%);
-top:-250px;
-left:-250px;
-filter:blur(120px);
-z-index:-1;
-}
-
-/* START SCREEN */
-#startScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#ff1e56,#7209b7);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-text-align:center;
-color:white;
-}
-
-#startScreen h2{
-font-size:28px;
-margin-bottom:20px;
-}
-
-#startScreen button{
-padding:15px 35px;
-font-size:18px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff1e56;
-font-weight:bold;
-box-shadow:0 5px 20px rgba(0,0,0,0.3);
-animation:beat 1s infinite;
-}
-
-@keyframes beat{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
-}
-
-/* SLIDES */
-.container{
-display:flex;
-width:300vw;
-height:100vh;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
 
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+display:flex;
+width:300vw;
+transition:0.6s ease;
+}
+
 .slide{
+min-height:100vh;
 width:100vw;
-height:100vh;
-flex-shrink:0;
-scroll-snap-align:start;
-overflow-y:auto;
 display:flex;
 flex-direction:column;
+justify-content:center;
 align-items:center;
-text-align:center;
 padding:40px 20px;
+text-align:center;
 }
 
-#progress{
-position:fixed;
-top:0;
-left:0;
-height:6px;
-background:white;
-width:33%;
-z-index:1000;
-transition:0.3s;
-}
-
+/* Glass effect */
 .glass{
-background:rgba(255,255,255,0.15);
-padding:20px;
-border-radius:20px;
+background:rgba(255,255,255,0.1);
 backdrop-filter:blur(15px);
-box-shadow:0 8px 30px rgba(0,0,0,0.3);
-margin-bottom:20px;
-}
-
-.frame{
-background:rgba(255,255,255,0.25);
-padding:10px;
+padding:25px 35px;
 border-radius:25px;
-backdrop-filter:blur(10px);
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+max-width:800px;
 }
 
-.frame img,
-.frame video{
-width:100%;
-border-radius:20px;
-display:block;
-}
-
+/* Slide 2 Grid */
 .photo-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-top:20px;
+column-count:3;
+column-gap:15px;
+margin-top:25px;
 width:100%;
-max-width:900px;
+max-width:1100px;
+}
+
+.photo-grid .frame{
+break-inside:avoid;
+margin-bottom:15px;
+border-radius:20px;
+overflow:hidden;
+background:linear-gradient(145deg,#3a7bd5,#00d2ff);
+padding:6px;
+}
+
+.photo-grid img{
+width:100%;
+display:block;
+border-radius:15px;
 }
 
 .video-grid{
-display:flex;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+width:100%;
+max-width:1000px;
 margin-top:25px;
-flex-wrap:wrap;
-justify-content:center;
+}
+
+.video-grid video{
 width:100%;
-max-width:900px;
+border-radius:20px;
 }
 
-.video-grid .frame{
-width:45%;
+/* Countdown */
+.countdown{
+font-size:1.5rem;
+margin-top:20px;
+letter-spacing:2px;
 }
 
-.bottom-photo{
-margin-top:30px;
-width:100%;
-max-width:700px;
-}
-
-#countdown{
-font-size:20px;
-font-weight:600;
-}
-
-/* HEARTS */
-.heart{
+/* Swipe indicator */
+.swipe{
 position:fixed;
-top:-10px;
-font-size:20px;
-animation:fall linear forwards;
-z-index:999;
-text-shadow:0 0 10px white;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+opacity:0.6;
+font-size:14px;
 }
 
-@keyframes fall{
-to{
-transform:translateY(110vh);
-opacity:0;
+/* Responsive */
+@media(max-width:900px){
+.photo-grid{ column-count:2; }
 }
+
+@media(max-width:500px){
+.photo-grid{ column-count:1; }
 }
 </style>
 </head>
 
 <body>
 
-<div id="startScreen">
-  <h2>Tap dulu yaa 💖</h2>
-  <button onclick="startMusic()">PLAY OUR SONG 🎵</button>
-</div>
+<!-- AUDIO (ganti file mp3 kamu disini) -->
+<audio autoplay loop>
+<source src="lagu.mp3" type="audio/mpeg">
+</audio>
 
-<div id="progress"></div>
-
-<div class="container" id="container">
+<div class="container" id="slider">
 
 <!-- SLIDE 1 -->
 <div class="slide">
-<h1 class="glass">for Pana 💖</h1>
-<p class="glass" id="typing"></p>
+<div class="glass">
+<h1>For Pana 💙</h1>
+<p style="margin-top:15px;">
+Makasih ya udah mau nerima aku apa adanya.  
+Thanks for choosing me every single day.  
+Kita udah lewatin banyak hal bareng, dan honestly  
+aku nggak nyangka bisa punya kamu di hidup aku.  
+
+You’re not just my girlfriend,  
+you’re my safe place, my favorite person.  
+I’m lucky to have you. 💙
+</p>
+</div>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide">
-<h1 class="glass">our memories 📸</h1>
+<h1 class="glass">Our Memories 📸</h1>
 
 <div class="photo-grid">
 <div class="frame"><img src="IMG-20250909-WA0444.jpg"></div>
 <div class="frame"><img src="IMG-20251101-WA0457.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0010.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0012.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0006.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0014.jpg"></div>
+<div class="frame"><img src="IMG-20250907-WA0503.jpg"></div>
+<div class="frame"><img src="foto4.jpg"></div>
+<div class="frame"><img src="foto5.jpg"></div>
 </div>
 
 <div class="video-grid">
 <div class="frame">
 <video controls>
-<source src="VID-20260214-WA0013.mp4" type="video/mp4">
+<source src="video1.mp4" type="video/mp4">
 </video>
 </div>
 
 <div class="frame">
 <video controls>
-<source src="VID-20260214-WA0015.mp4" type="video/mp4">
+<source src="video2.mp4" type="video/mp4">
 </video>
-</div>
-</div>
-
-<div class="bottom-photo">
-<div class="frame">
-<img src="foto6.jpg">
 </div>
 </div>
 
@@ -243,68 +170,58 @@ opacity:0;
 
 <!-- SLIDE 3 -->
 <div class="slide">
-<h1 class="glass">happy valentine 💘</h1>
-<p class="glass">almost 1 year… and i still choose you. always.</p>
-<div class="glass" id="countdown"></div>
+<div class="glass">
+<h1>Happy Valentine 💙</h1>
+<p style="margin-top:15px;">
+Semoga kita terus bareng sampe setahun, dua tahun,  
+dan seterusnya tanpa jeda 🤍  
+Aku mau rayain 5-5-2026 bareng kamu.
+</p>
+
+<div class="countdown" id="countdown"></div>
+</div>
 </div>
 
 </div>
 
-<audio id="music" loop>
-<source src="kasihputih.mp3" type="audio/mp3">
-</audio>
+<div class="swipe">Geser layar ➡</div>
 
 <script>
-const container=document.getElementById("container");
-const progress=document.getElementById("progress");
-const music=document.getElementById("music");
+let slider = document.getElementById("slider");
+let startX = 0;
+let current = 0;
 
-function startMusic(){
-music.play();
-document.getElementById("startScreen").style.display="none";
-startHearts();
-}
-
-container.addEventListener("scroll",()=>{
-let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
-progress.style.width=(slide/3*100)+"%";
+document.addEventListener("touchstart", e=>{
+startX = e.touches[0].clientX;
 });
 
-const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
-let i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,35);
-}}
-type();
+document.addEventListener("touchend", e=>{
+let endX = e.changedTouches[0].clientX;
+if(startX - endX > 50 && current < 2){
+current++;
+}
+if(endX - startX > 50 && current > 0){
+current--;
+}
+slider.style.transform = "translateX(-"+(current*100)+"vw)";
+});
 
-const targetDate=new Date("May 5, 2026 00:00:00").getTime();
+/* COUNTDOWN */
+let target = new Date("May 5, 2026 00:00:00").getTime();
+let countdown = document.getElementById("countdown");
+
 setInterval(()=>{
-const now=new Date().getTime();
-const distance=targetDate-now;
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-const seconds=Math.floor((distance%(1000*60))/1000);
-document.getElementById("countdown").innerHTML=
-days+" hari "+hours+" jam "+minutes+" menit "+seconds+" detik 💖";
+let now = new Date().getTime();
+let distance = target - now;
+
+let days = Math.floor(distance/(1000*60*60*24));
+let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds = Math.floor((distance%(1000*60))/1000);
+
+countdown.innerHTML =
+days+" Hari "+hours+" Jam "+minutes+" Menit "+seconds+" Detik";
 },1000);
-
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+2)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>{heart.remove();},5000);
-}
-
-function startHearts(){
-setInterval(createHeart,300);
-}
 </script>
 
 </body>
