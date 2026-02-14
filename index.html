@@ -8,63 +8,44 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
 body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1e3c72);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
 color:white;
 overflow-x:hidden;
 }
 
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
 /* OPENING */
 #opening{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
+position:fixed;top:0;left:0;
+width:100%;height:100vh;
 background:linear-gradient(135deg,#1e3c72,#2a5298);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-transition:1s ease;
+display:flex;justify-content:center;align-items:center;
+z-index:9999;transition:1s ease;
 }
-
-.opening-box{
-text-align:center;
-color:white;
-animation:fadeIn 1.5s ease;
-}
-
+.opening-box{text-align:center;}
 .opening-box button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:25px;
-background:white;
-color:#1e3c72;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.opening-box button:hover{transform:scale(1.1);}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+margin-top:20px;padding:12px 25px;
+border:none;border-radius:25px;
+background:white;color:#1e3c72;
+font-weight:bold;cursor:pointer;
 }
 
 /* SLIDER */
-.container{display:flex;width:300vw;transition:0.8s ease;}
+.container{display:flex;width:500vw;transition:0.8s ease;}
 .slide{
-min-height:100vh;
-width:100vw;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
+min-height:100vh;width:100vw;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+padding:40px 20px;text-align:center;
 }
 
 .glass{
@@ -77,64 +58,48 @@ max-width:800px;
 }
 
 .photo-grid{
-column-count:3;
-column-gap:15px;
-margin-top:25px;
-width:100%;
-max-width:1100px;
+column-count:3;column-gap:15px;
+margin-top:25px;width:100%;max-width:1100px;
 }
-
 .frame{
-break-inside:avoid;
-margin-bottom:15px;
-border-radius:20px;
-overflow:hidden;
+break-inside:avoid;margin-bottom:15px;
+border-radius:20px;overflow:hidden;
 background:linear-gradient(145deg,#3a7bd5,#00d2ff);
-padding:6px;
-transition:0.3s;
+padding:6px;transition:0.3s;
 }
-
 .frame:hover{transform:scale(1.05);}
-.photo-grid img{width:100%;border-radius:15px;}
+.photo-grid img{width:100%;border-radius:15px;cursor:pointer;}
 
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-width:100%;
-max-width:1000px;
-margin-top:25px;
+gap:20px;width:100%;max-width:1000px;margin-top:25px;
 }
-
 video{width:100%;border-radius:20px;}
 
-.countdown{
-font-size:1.6rem;
-margin-top:20px;
-text-shadow:0 0 10px #00d2ff;
-}
+.countdown{font-size:1.6rem;margin-top:20px;}
 
 .music-btn{
-position:fixed;
-top:15px;
-right:15px;
-background:#00d2ff;
-color:#000;
-border:none;
-padding:10px 15px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
-z-index:999;
+position:fixed;top:15px;right:15px;
+background:#00d2ff;color:#000;
+border:none;padding:10px 15px;
+border-radius:20px;cursor:pointer;
+font-weight:bold;z-index:999;
 }
 
 .swipe{
-position:fixed;
-bottom:15px;
-left:50%;
+position:fixed;bottom:15px;left:50%;
 transform:translateX(-50%);
-opacity:0.6;
-font-size:14px;
+opacity:0.6;font-size:14px;
+}
+
+.hidden{
+position:fixed;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+background:rgba(0,0,0,0.8);
+padding:30px;border-radius:20px;
+display:none;z-index:9999;text-align:center;
 }
 
 @media(max-width:900px){.photo-grid{column-count:2;}}
@@ -144,44 +109,39 @@ font-size:14px;
 
 <body>
 
-<!-- OPENING SCREEN -->
 <div id="opening">
-  <div class="opening-box">
-    <h1>For Someone Special 💙</h1>
-    <p>Tap to enter our little world ✨</p>
-    <button onclick="enterSite()">Enter 💌</button>
-  </div>
+<div class="opening-box">
+<h1>For Someone Special 💙</h1>
+<p>Tap to enter ✨</p>
+<button onclick="enterSite()">Enter 💌</button>
+</div>
 </div>
 
-<!-- AUDIO -->
 <audio id="bgmusic" loop preload="auto">
-  <source src="./kasihputih.mp3" type="audio/mpeg">
+<source src="./kasihputih.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" id="musicBtn">🎵 Tap To Play</button>
 
 <div class="container" id="slider">
 
+<!-- SLIDE 1 -->
 <div class="slide">
 <div class="glass">
 <h1>For Pana 💙</h1>
-<p style="margin-top:15px;">
-Makasih ya udah nerima aku & mau jalanin semuanya bareng.  
-Thank you for choosing me every day.  
-You’re my favorite person & my safe place 🤍
-</p>
+<p id="typingText" style="margin-top:15px;"></p>
 </div>
 </div>
 
+<!-- SLIDE 2 -->
 <div class="slide">
 <h1 class="glass">Our Memories 📸</h1>
-
 <div class="photo-grid">
-<div class="frame"><img src="IMG-20250909-WA0444.jpg"></div>
-<div class="frame"><img src="IMG-20251101-WA0457.jpg"></div>
-<div class="frame"><img src="IMG-20250907-WA0503.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0012.jpg"></div>
-<div class="frame"><img src="IMG-20260214-WA0010.jpg"></div>
+<div class="frame"><img src="IMG-20250909-WA0444.jpg" onclick="zoom(this)"></div>
+<div class="frame"><img src="IMG-20251101-WA0457.jpg" onclick="zoom(this)"></div>
+<div class="frame"><img src="IMG-20250907-WA0503.jpg" onclick="zoom(this)"></div>
+<div class="frame"><img src="IMG-20260214-WA0012.jpg" onclick="zoom(this)"></div>
+<div class="frame"><img src="IMG-20260214-WA0010.jpg" onclick="zoom(this)"></div>
 </div>
 
 <div class="video-grid">
@@ -190,79 +150,156 @@ You’re my favorite person & my safe place 🤍
 <source src="VID-20260214-WA0015.mp4" type="video/mp4">
 </video>
 </div>
-
 <div class="frame">
 <video controls>
 <source src="VID-20260214-WA0013.mp4" type="video/mp4">
 </video>
 </div>
 </div>
-
 </div>
 
+<!-- SLIDE 3 -->
 <div class="slide">
 <div class="glass">
 <h1>Happy Valentine 💙</h1>
-<p style="margin-top:15px;">
-Menuju 5-5-2026 bareng kamu 🤍
-</p>
+<p style="margin-top:15px;">Menuju 5-5-2026 bareng kamu 🤍</p>
 <div class="countdown" id="countdown"></div>
 </div>
 </div>
 
+<!-- SLIDE 4 -->
+<div class="slide">
+<div class="glass">
+<h1>Random Thoughts 💭</h1>
+<p id="randomText" style="margin-top:15px;"></p>
+</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide" id="lastSlide">
+<div class="glass">
+<h1>Hold Screen 🤍</h1>
+<p>Tahan layar sebentar ya...</p>
+</div>
+</div>
+
+</div>
+
+<div class="hidden" id="hiddenMessage">
+<h2>Aku selalu milih kamu 🤍</h2>
+<p>Ga cuma hari ini, tapi seterusnya.</p>
 </div>
 
 <div class="swipe">Geser layar ➡</div>
 
 <script>
-/* SLIDE SWIPE */
 let slider=document.getElementById("slider");
-let startX=0;
-let current=0;
+let startX=0,current=0,totalSlides=4;
 
 document.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
 document.addEventListener("touchend",e=>{
 let endX=e.changedTouches[0].clientX;
-if(startX-endX>50&&current<2){current++;}
+if(startX-endX>50&&current<totalSlides){current++;}
 if(endX-startX>50&&current>0){current--;}
 slider.style.transform="translateX(-"+(current*100)+"vw)";
 });
 
-/* MUSIC */
+/* MUSIC FADE IN */
 const music=document.getElementById("bgmusic");
 const btn=document.getElementById("musicBtn");
 
-btn.addEventListener("click",()=>{
-if(music.paused){
-music.play().then(()=>{btn.innerText="⏸ Pause Music";});
-}else{
-music.pause();
-btn.innerText="🎵 Play Music";
+function fadeInAudio(){
+music.volume=0;
+music.play();
+let vol=0;
+let fade=setInterval(()=>{
+if(vol<1){vol+=0.05;music.volume=vol;}
+else{clearInterval(fade);}
+},200);
 }
+
+btn.addEventListener("click",()=>{
+if(music.paused){fadeInAudio();btn.innerText="⏸ Pause Music";}
+else{music.pause();btn.innerText="🎵 Play Music";}
 });
 
-/* OPENING ENTER */
 function enterSite(){
-const opening=document.getElementById("opening");
-opening.style.opacity="0";
-setTimeout(()=>{opening.style.display="none";},1000);
-music.play().catch(()=>{});
+document.getElementById("opening").style.display="none";
+fadeInAudio();
 btn.innerText="⏸ Pause Music";
 }
 
+/* TYPING EFFECT */
+const text="Makasih ya udah nerima aku dan mau jalanin semuanya bareng. Aku selalu nyaman sama kamu 🤍";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typingText").innerHTML+=text.charAt(i);
+i++;setTimeout(typing,40);
+}}
+typing();
+
 /* COUNTDOWN */
 let target=new Date("May 5, 2026 00:00:00").getTime();
-let countdown=document.getElementById("countdown");
-
 setInterval(()=>{
 let now=new Date().getTime();
 let distance=target-now;
-let days=Math.floor(distance/(1000*60*60*24));
-let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-let seconds=Math.floor((distance%(1000*60))/1000);
-countdown.innerHTML=days+" Hari "+hours+" Jam "+minutes+" Menit "+seconds+" Detik";
+let d=Math.floor(distance/(1000*60*60*24));
+let h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((distance%(1000*60*60))/(1000*60));
+let s=Math.floor((distance%(1000*60))/1000);
+document.getElementById("countdown").innerHTML=d+" Hari "+h+" Jam "+m+" Menit "+s+" Detik";
 },1000);
+
+/* RANDOM TEXT */
+const texts=[
+"Aku ngerasa hidupku lebih tenang sejak ada kamu.",
+"Kamu tuh bukan cuma pacar, tapi partner cerita juga.",
+"Aku nggak butuh yang sempurna, cukup kamu aja.",
+"Kadang aku mikir, kok bisa ya aku seberuntung ini?",
+"Yang penting bukan kemana, tapi sama kamu."
+];
+document.getElementById("randomText").innerText=
+texts[Math.floor(Math.random()*texts.length)];
+
+/* ZOOM FOTO */
+function zoom(img){
+let overlay=document.createElement("div");
+overlay.style.position="fixed";
+overlay.style.top="0";
+overlay.style.left="0";
+overlay.style.width="100%";
+overlay.style.height="100%";
+overlay.style.background="rgba(0,0,0,0.8)";
+overlay.style.display="flex";
+overlay.style.justifyContent="center";
+overlay.style.alignItems="center";
+overlay.style.zIndex="9999";
+
+let big=document.createElement("img");
+big.src=img.src;
+big.style.maxWidth="90%";
+big.style.maxHeight="90%";
+big.style.borderRadius="20px";
+
+overlay.appendChild(big);
+overlay.onclick=()=>overlay.remove();
+document.body.appendChild(overlay);
+}
+
+/* HIDDEN MESSAGE */
+let pressTimer;
+document.getElementById("lastSlide").addEventListener("touchstart",()=>{
+pressTimer=setTimeout(()=>{
+document.getElementById("hiddenMessage").style.display="block";
+},800);
+});
+document.getElementById("lastSlide").addEventListener("touchend",()=>{
+clearTimeout(pressTimer);
+});
+document.getElementById("hiddenMessage").onclick=()=>{
+document.getElementById("hiddenMessage").style.display="none";
+};
 </script>
 
 </body>
