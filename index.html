@@ -38,9 +38,9 @@ z-index:1000;
 position:absolute;
 width:100%;
 height:100%;
+overflow-y:auto;
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
 text-align:center;
 padding:30px;
@@ -65,41 +65,67 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.carousel{
-position:relative;
-width:220px;
-height:300px;
-overflow:hidden;
+h1 span{
+text-shadow:0 0 10px white,0 0 20px white;
+}
+
+/* FRAME */
+.frame{
+background:white;
+padding:8px;
 border-radius:20px;
+box-shadow:
+0 0 15px rgba(255,255,255,0.6),
+0 0 25px rgba(255,77,109,0.5),
+0 10px 30px rgba(0,0,0,0.4);
+transition:0.3s;
 }
 
-.carousel img{
-position:absolute;
+.frame:hover{
+transform:scale(1.05);
+}
+
+.frame img,
+.frame video{
 width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:1s;
-animation:zoom 6s infinite alternate;
-}
-
-.carousel img.active{
-opacity:1;
-}
-
-@keyframes zoom{
-0%{transform:scale(1);}
-100%{transform:scale(1.1);}
-}
-
-video{
-width:220px;
-margin-top:15px;
 border-radius:15px;
+display:block;
+}
+
+/* grid foto */
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:20px;
+width:100%;
+max-width:900px;
+}
+
+/* video grid */
+.video-grid{
+display:flex;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+justify-content:center;
+width:100%;
+max-width:900px;
+}
+
+.video-grid .frame{
+width:45%;
+}
+
+/* bottom photo */
+.bottom-photo{
+margin-top:25px;
+width:100%;
+max-width:700px;
 }
 
 #countdown{
-margin-top:15px;
+margin-top:20px;
 font-size:18px;
 }
 </style>
@@ -111,26 +137,42 @@ font-size:18px;
 
 <!-- SLIDE 1 -->
 <div class="slide active" id="slide1">
-<h1>for Pana 💖</h1>
+<h1>for <span>Pana</span> 💖</h1>
 <p id="typing"></p>
-<div>
 <button onclick="nextSlide()">next ➜</button>
-</div>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide" id="slide2">
 <h1>our memories 📸</h1>
 
-<div class="carousel">
-<img src="foto1.jpg" class="active">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
+<div class="photo-grid">
+<div class="frame"><img src="foto1.jpg"></div>
+<div class="frame"><img src="foto2.jpg"></div>
+<div class="frame"><img src="foto3.jpg"></div>
+<div class="frame"><img src="foto4.jpg"></div>
+<div class="frame"><img src="foto5.jpg"></div>
 </div>
 
+<div class="video-grid">
+<div class="frame">
 <video controls>
-<source src="video.mp4" type="video/mp4">
+<source src="video1.mp4" type="video/mp4">
 </video>
+</div>
+
+<div class="frame">
+<video controls>
+<source src="video2.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+
+<div class="bottom-photo">
+<div class="frame">
+<img src="foto6.jpg">
+</div>
+</div>
 
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mp3">
@@ -140,6 +182,7 @@ font-size:18px;
 <button onclick="prevSlide()">⬅ back</button>
 <button onclick="nextSlide()">next ➜</button>
 </div>
+
 </div>
 
 <!-- SLIDE 3 -->
@@ -147,9 +190,7 @@ font-size:18px;
 <h1>happy valentine 💘</h1>
 <p>almost 1 year… and i still choose you. always.</p>
 <div id="countdown"></div>
-<div>
 <button onclick="prevSlide()">⬅ back</button>
-</div>
 </div>
 
 <script>
@@ -180,8 +221,8 @@ document.getElementById("slide"+current).classList.add("active");
 updateProgress();
 }
 
-// TYPEWRITER
-const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you 🤍";
+/* TYPEWRITER */
+const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
 let i=0;
 function type(){
 if(i<text.length){
@@ -192,17 +233,7 @@ setTimeout(type,35);
 }
 type();
 
-// CAROUSEL AUTO
-let slideIndex=0;
-const slides=document.querySelectorAll(".carousel img");
-
-setInterval(()=>{
-slides[slideIndex].classList.remove("active");
-slideIndex=(slideIndex+1)%slides.length;
-slides[slideIndex].classList.add("active");
-},3000);
-
-// COUNTDOWN
+/* COUNTDOWN */
 const targetDate=new Date("May 5, 2026 00:00:00").getTime();
 setInterval(function(){
 const now=new Date().getTime();
