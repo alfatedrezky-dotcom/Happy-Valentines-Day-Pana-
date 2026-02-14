@@ -12,9 +12,9 @@
 
 body{
 overflow:hidden;
-background:linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffb3c6,#ffc2d1,#cdb4db);
+background:linear-gradient(135deg,#ff1e56,#ff4d6d,#ff8fa3,#ffc2d1);
 background-size:400% 400%;
-animation:bg 15s ease infinite;
+animation:bg 12s ease infinite;
 color:white;
 }
 
@@ -24,14 +24,14 @@ color:white;
 100%{background-position:0% 50%;}
 }
 
-/* TAP SCREEN */
+/* START SCREEN */
 #startScreen{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+background:linear-gradient(135deg,#ff1e56,#ff4d6d);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -41,6 +41,30 @@ text-align:center;
 color:white;
 }
 
+#startScreen h2{
+font-size:28px;
+margin-bottom:20px;
+}
+
+#startScreen button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff1e56;
+font-weight:bold;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+/* SLIDES */
 .container{
 display:flex;
 width:300vw;
@@ -84,7 +108,7 @@ margin-bottom:20px;
 }
 
 .frame{
-background:rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.25);
 padding:10px;
 border-radius:25px;
 backdrop-filter:blur(10px);
@@ -136,10 +160,10 @@ font-weight:600;
 
 <body>
 
-<!-- TAP START -->
+<!-- START -->
 <div id="startScreen">
-  <h2>Tap dulu ya sayang 💖</h2>
-  <p>biar lagunya bisa jalan 🎵</p>
+  <h2>Tap dulu yaa 💖</h2>
+  <button onclick="startMusic()">PLAY OUR SONG 🎵</button>
 </div>
 
 <div id="progress"></div>
@@ -204,46 +228,41 @@ font-weight:600;
 const container=document.getElementById("container");
 const progress=document.getElementById("progress");
 const music=document.getElementById("music");
-const startScreen=document.getElementById("startScreen");
 
-/* START MUSIC AFTER TAP */
-startScreen.addEventListener("click",function(){
+/* START MUSIC */
+function startMusic(){
     music.play();
-    startScreen.style.display="none";
-});
+    document.getElementById("startScreen").style.display="none";
+}
 
-/* PROGRESS BAR */
+/* PROGRESS */
 container.addEventListener("scroll",()=>{
-    let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
-    progress.style.width=(slide/3*100)+"%";
+let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
+progress.style.width=(slide/3*100)+"%";
 });
 
-/* TYPEWRITER */
+/* TYPE */
 const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
 let i=0;
 function type(){
-    if(i<text.length){
-        document.getElementById("typing").innerHTML+=text.charAt(i);
-        i++;
-        setTimeout(type,35);
-    }
-}
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,35);
+}}
 type();
 
 /* COUNTDOWN */
 const targetDate=new Date("May 5, 2026 00:00:00").getTime();
-setInterval(function(){
-    const now=new Date().getTime();
-    const distance=targetDate-now;
-
-    const days=Math.floor(distance/(1000*60*60*24));
-    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-    const seconds=Math.floor((distance%(1000*60))/1000);
-
-    document.getElementById("countdown").innerHTML=
-    days+" hari "+hours+" jam "+
-    minutes+" menit "+seconds+" detik 💖";
+setInterval(()=>{
+const now=new Date().getTime();
+const distance=targetDate-now;
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+document.getElementById("countdown").innerHTML=
+days+" hari "+hours+" jam "+minutes+" menit "+seconds+" detik 💖";
 },1000);
 </script>
 
