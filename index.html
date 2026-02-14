@@ -3,208 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Highschool Story</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+<title>buat kamu 💕</title>
 
 <style>
-*{
+body{
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-body{
-  background:#0c0c0c;
-  color:white;
+  font-family:'Comic Sans MS', cursive;
+  background: linear-gradient(135deg,#ffd6ec,#ffe9f6,#d6f0ff);
+  background-size:300% 300%;
+  animation:bg 8s infinite alternate;
   overflow:hidden;
+  text-align:center;
 }
 
-/* INTRO SCREEN */
-#intro{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:999;
-  transition:1s;
-}
-
-#intro h1{
-  font-size:32px;
-  letter-spacing:3px;
-  opacity:0;
-  animation:fadeIn 2s forwards;
-}
-
-#intro p{
-  margin-top:10px;
-  opacity:0;
-  animation:fadeIn 2s forwards;
-  animation-delay:1s;
-}
-
-@keyframes fadeIn{
-  to{opacity:1;}
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  100%{background-position:100% 50%;}
 }
 
 .container{
   height:100vh;
-  overflow-y:scroll;
-  scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
-}
-
-.section{
-  height:100vh;
-  scroll-snap-align:start;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
-  position:relative;
-  padding:30px;
+  padding:20px;
 }
 
-.bg{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  filter:blur(20px) brightness(0.35);
-  z-index:-1;
-  transform:scale(1.3);
-  transition:transform 0.3s ease;
-}
-
-.photo{
-  width:260px;
+img{
+  width:220px;
   border-radius:20px;
-  box-shadow:0 0 50px rgba(255,0,70,0.6);
-  margin-bottom:20px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  animation:goyang 3s infinite ease-in-out;
 }
 
-.section.active .photo{
-  opacity:1;
-  transform:translateY(0);
+@keyframes goyang{
+  0%,100%{transform:rotate(-2deg);}
+  50%{transform:rotate(2deg);}
 }
 
-h2{
-  font-size:26px;
-  margin-bottom:15px;
+h1{
+  color:#ff4fa3;
+  margin-top:20px;
 }
 
-.text{
-  font-weight:300;
-  max-width:320px;
-  margin:auto;
-  line-height:1.7;
-}
-
-.glow{
-  color:#ff004c;
+p{
+  max-width:300px;
+  color:#ff4fa3;
+  line-height:1.6;
 }
 
 button{
-  margin-top:20px;
+  margin-top:15px;
   padding:10px 25px;
   border:none;
-  border-radius:30px;
-  background:#ff004c;
+  border-radius:25px;
+  background:#ff8acb;
   color:white;
-  font-weight:600;
+  font-weight:bold;
   cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+/* floating heart */
+.heart{
+  position:absolute;
+  color:#ff69b4;
+  animation:naik 6s linear infinite;
+}
+
+@keyframes naik{
+  0%{transform:translateY(100vh);opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
 }
 </style>
 </head>
+
 <body>
 
-<div id="intro">
-  <h1>Our Highschool Story</h1>
-  <p>tap to start</p>
-</div>
-
-<audio id="music" loop>
-  <source src="music.mp3" type="audio/mp3">
-</audio>
-
 <div class="container">
+  <img src="foto.jpg" alt="foto kamu">
 
-<section class="section">
-  <div class="bg" style="background-image:url('IMG-20251101-WA0457.jpg')"></div>
-  <div>
-    <img src="IMG-20251101-WA0457.jpg" class="photo">
-    <h2>Hey you...</h2>
-    <p class="text">
-      Gue ga tau nanti bakal sejauh apa.
-      Tapi sekarang?
-      Bareng lo aja udah cukup bikin gue tenang.
-    </p>
-  </div>
-</section>
+  <h1>eh kamu 🫵😌</h1>
 
-<section class="section">
-  <div class="bg" style="background-image:url('IMG-20250907-WA0503.jpg')"></div>
-  <div>
-    <img src="IMG-20250907-WA0503.jpg" class="photo">
-    <h2 class="glow">Still Us.</h2>
-    <p class="text">
-      Masih SMA.
-      Masih belajar.
-      Masih sering ketawa random.
-      And honestly?
-      I like this version of us.
-    </p>
-  </div>
-</section>
+  <p id="text">
+    serius deh, kamu tuh gemes banget.
+    tiap liat foto ini aku senyum sendiri 😭💕
+  </p>
 
-<section class="section">
-  <div class="bg" style="background-image:url('IMG-20250909-WA0444.jpg')"></div>
-  <div>
-    <img src="IMG-20250909-WA0444.jpg" class="photo">
-    <h2>Not Forever Yet.</h2>
-    <p class="text">
-      Ini bukan janji selamanya dulu.
-      Ini cuma kita…
-      Nikmatin masa SMA bareng.
-      And I don’t wanna rush it.
-    </p>
-  </div>
-</section>
-
+  <button onclick="gantiText()">pencet dong 🥺</button>
 </div>
 
 <script>
-const intro = document.getElementById("intro");
-const music = document.getElementById("music");
+const kata = [
+"kamu tuh gemes banget. aku ga bohong.",
+"aku tau kita masih muda, tapi rasa aku ke kamu real sih.",
+"kalau kamu lagi capek, sini aku peluk virtual dulu 🤗",
+"i'm lucky banget bisa kenal kamu.",
+"jangan kemana-mana ya, stay sama aku terus."
+];
 
-intro.addEventListener("click",()=>{
-  intro.style.opacity="0";
-  setTimeout(()=> intro.style.display="none",1000);
-  music.play();
-});
+let i = 0;
 
-const sections = document.querySelectorAll(".section");
+function gantiText(){
+  i++;
+  if(i >= kata.length) i = 0;
+  document.getElementById("text").innerText = kata[i];
+}
 
-window.addEventListener("scroll",()=>{
-  let index = Math.round(window.scrollY / window.innerHeight);
-  sections.forEach((sec,i)=>{
-    if(i === index){
-      sec.classList.add("active");
-    } else {
-      sec.classList.remove("active");
-    }
-  });
-});
+function hati(){
+  const heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+}
+
+setInterval(hati,800);
 </script>
 
 </body>
