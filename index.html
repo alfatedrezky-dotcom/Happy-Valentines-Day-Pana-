@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Blue Theme</title>
+<title>Valentine Blue 💙</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -21,10 +21,11 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SLIDER */
 .container{
 display:flex;
 width:300vw;
-transition:0.6s ease;
+transition:0.8s ease;
 }
 
 .slide{
@@ -38,17 +39,17 @@ padding:40px 20px;
 text-align:center;
 }
 
-/* Glass effect */
+/* GLASS */
 .glass{
 background:rgba(255,255,255,0.1);
 backdrop-filter:blur(15px);
 padding:25px 35px;
 border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
 max-width:800px;
 }
 
-/* Slide 2 Grid */
+/* FOTO */
 .photo-grid{
 column-count:3;
 column-gap:15px;
@@ -57,13 +58,18 @@ width:100%;
 max-width:1100px;
 }
 
-.photo-grid .frame{
+.frame{
 break-inside:avoid;
 margin-bottom:15px;
 border-radius:20px;
 overflow:hidden;
 background:linear-gradient(145deg,#3a7bd5,#00d2ff);
 padding:6px;
+transition:0.3s;
+}
+
+.frame:hover{
+transform:scale(1.05);
 }
 
 .photo-grid img{
@@ -72,6 +78,7 @@ display:block;
 border-radius:15px;
 }
 
+/* VIDEO */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -81,19 +88,33 @@ max-width:1000px;
 margin-top:25px;
 }
 
-.video-grid video{
+video{
 width:100%;
 border-radius:20px;
 }
 
-/* Countdown */
+/* COUNTDOWN */
 .countdown{
-font-size:1.5rem;
+font-size:1.6rem;
 margin-top:20px;
-letter-spacing:2px;
+text-shadow:0 0 10px #00d2ff;
 }
 
-/* Swipe indicator */
+/* MUSIC BUTTON */
+.music-btn{
+position:fixed;
+top:15px;
+right:15px;
+background:#00d2ff;
+color:#000;
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* SWIPE TEXT */
 .swipe{
 position:fixed;
 bottom:15px;
@@ -103,7 +124,6 @@ opacity:0.6;
 font-size:14px;
 }
 
-/* Responsive */
 @media(max-width:900px){
 .photo-grid{ column-count:2; }
 }
@@ -116,10 +136,14 @@ font-size:14px;
 
 <body>
 
-<!-- AUDIO (ganti file mp3 kamu disini) -->
-<audio autoplay loop>
-<source src="lagu.mp3" type="audio/mpeg">
+<!-- AUDIO -->
+<audio id="bgmusic" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
 </audio>
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+Play Music 🎵
+</button>
 
 <div class="container" id="slider">
 
@@ -128,14 +152,9 @@ font-size:14px;
 <div class="glass">
 <h1>For Pana 💙</h1>
 <p style="margin-top:15px;">
-Makasih ya udah mau nerima aku apa adanya.  
-Thanks for choosing me every single day.  
-Kita udah lewatin banyak hal bareng, dan honestly  
-aku nggak nyangka bisa punya kamu di hidup aku.  
-
-You’re not just my girlfriend,  
-you’re my safe place, my favorite person.  
-I’m lucky to have you. 💙
+Makasih ya udah nerima aku & mau jalanin semuanya bareng.  
+Thank you for choosing me every day.  
+You’re my favorite person & my safe place 🤍
 </p>
 </div>
 </div>
@@ -173,11 +192,8 @@ I’m lucky to have you. 💙
 <div class="glass">
 <h1>Happy Valentine 💙</h1>
 <p style="margin-top:15px;">
-Semoga kita terus bareng sampe setahun, dua tahun,  
-dan seterusnya tanpa jeda 🤍  
-Aku mau rayain 5-5-2026 bareng kamu.
+Menuju 5-5-2026 bareng kamu 🤍
 </p>
-
 <div class="countdown" id="countdown"></div>
 </div>
 </div>
@@ -187,40 +203,53 @@ Aku mau rayain 5-5-2026 bareng kamu.
 <div class="swipe">Geser layar ➡</div>
 
 <script>
-let slider = document.getElementById("slider");
-let startX = 0;
-let current = 0;
+/* SLIDE SWIPE */
+let slider=document.getElementById("slider");
+let startX=0;
+let current=0;
 
-document.addEventListener("touchstart", e=>{
-startX = e.touches[0].clientX;
+document.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
 });
 
-document.addEventListener("touchend", e=>{
-let endX = e.changedTouches[0].clientX;
-if(startX - endX > 50 && current < 2){
-current++;
-}
-if(endX - startX > 50 && current > 0){
-current--;
-}
-slider.style.transform = "translateX(-"+(current*100)+"vw)";
+document.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50&&current<2){current++;}
+if(endX-startX>50&&current>0){current--;}
+slider.style.transform="translateX(-"+(current*100)+"vw)";
 });
+
+/* MUSIC */
+const music=document.getElementById("bgmusic");
+const btn=document.getElementById("musicBtn");
+
+function toggleMusic(){
+if(music.paused){
+music.play();
+btn.innerText="Pause Music ⏸";
+}else{
+music.pause();
+btn.innerText="Play Music 🎵";
+}
+}
+
+/* Autoplay setelah sentuhan pertama */
+document.addEventListener("click",()=>{
+music.play().catch(()=>{});
+},{once:true});
 
 /* COUNTDOWN */
-let target = new Date("May 5, 2026 00:00:00").getTime();
-let countdown = document.getElementById("countdown");
+let target=new Date("May 5, 2026 00:00:00").getTime();
+let countdown=document.getElementById("countdown");
 
 setInterval(()=>{
-let now = new Date().getTime();
-let distance = target - now;
-
-let days = Math.floor(distance/(1000*60*60*24));
-let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-let seconds = Math.floor((distance%(1000*60))/1000);
-
-countdown.innerHTML =
-days+" Hari "+hours+" Jam "+minutes+" Menit "+seconds+" Detik";
+let now=new Date().getTime();
+let distance=target-now;
+let days=Math.floor(distance/(1000*60*60*24));
+let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds=Math.floor((distance%(1000*60))/1000);
+countdown.innerHTML=days+" Hari "+hours+" Jam "+minutes+" Menit "+seconds+" Detik";
 },1000);
 </script>
 
