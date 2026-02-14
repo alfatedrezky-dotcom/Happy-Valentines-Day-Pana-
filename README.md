@@ -1,238 +1,247 @@
-# Happy-Valentines-Day-Pana-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine Sayang ❤️</title>
+<title>Ultimate SMA Love 💕</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(135deg, #ff4e8b, #ff99cc);
-    color: white;
-    overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  overflow:hidden;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  color:white;
+  transition:1s;
 }
 
-.container {
-    margin-top: 60px;
-    padding: 20px;
+/* LOADING */
+#loading{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#ff4d88;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  z-index:9999;
+  animation:fadeOut 3s forwards 2s;
 }
 
-h1 {
-    font-size: 40px;
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden;}
 }
 
-.typing {
-    font-size: 22px;
-    border-right: 3px solid white;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
+.swiper{width:100%;height:100vh;}
+
+.swiper-slide{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
 }
 
-.gift {
-    font-size: 80px;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: 0.3s;
+h1{font-size:30px;margin-bottom:15px;}
+p{max-width:700px;line-height:1.7;font-size:17px;margin-bottom:15px;}
+
+img{
+  width:220px;
+  height:320px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(255,255,255,0.6);
+  margin:10px;
+  transition:0.4s;
+}
+img:hover{transform:scale(1.07);}
+
+.typing{
+  border-right:3px solid white;
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+  animation:typing 4s steps(40,end) forwards;
+}
+@keyframes typing{from{width:0}to{width:100%}}
+
+.hearts{
+  position:fixed;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+.hearts span{
+  position:absolute;
+  bottom:-20px;
+  width:15px;
+  height:15px;
+  background:white;
+  transform:rotate(45deg);
+  animation:float 8s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0) rotate(45deg); opacity:1;}
+  100%{transform:translateY(-1000px) rotate(45deg); opacity:0;}
 }
 
-.gift:hover {
-    transform: scale(1.2);
+.counter{font-size:22px;margin-top:10px;font-weight:bold;}
+
+button{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
 }
 
-.hidden {
-    display: none;
-}
+.yesBtn{background:white;color:#ff4d88;}
+.noBtn{background:#ff4d88;color:white;position:relative;}
 
-.gallery img {
-    width: 180px;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 20px;
-    margin: 10px;
-    box-shadow: 0 0 20px white;
-    transition: 0.3s;
-}
-
-.gallery img:hover {
-    transform: scale(1.1);
-}
-
-button {
-    padding: 12px 25px;
-    margin: 10px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.yesBtn {
-    background: white;
-    color: #ff4e8b;
-}
-
-.noBtn {
-    background: #ff1a75;
-    color: white;
-    position: relative;
-}
-
-.heart {
-    position: fixed;
-    top: -10px;
-    color: red;
-    animation: fall linear forwards;
-}
-
-@keyframes fall {
-    to { transform: translateY(100vh); }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background: yellow;
-    animation: fall linear forwards;
-}
 </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-    <source src="valentine.mp3" type="audio/mpeg">
+<div id="loading">Untuk Kamu ❤️</div>
+<div class="hearts"></div>
+
+<div class="swiper">
+<div class="swiper-wrapper">
+
+<!-- SLIDE 1 -->
+<div class="swiper-slide">
+<h1 class="typing">Hai Cantikku 💕</h1>
+<p>
+Kita masih sama-sama pakai seragam,
+masih sama-sama belajar,
+dan aku seneng banget bisa jalanin masa SMA ini bareng kamu.
+</p>
+</div>
+
+<!-- SLIDE 2 FOTO -->
+<div class="swiper-slide">
+<h1>Our Moments 📸</h1>
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<p id="lyrics" style="margin-top:15px;font-style:italic;opacity:0;"></p>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="swiper-slide">
+<h1>For You ❤️</h1>
+<p>
+You are my favorite person in school,
+my favorite notification,
+and my favorite part of every day.
+</p>
+<p>
+Aku nggak tau masa depan bakal gimana,
+tapi sekarang aku bahagia banget sama kamu 💖
+</p>
+</div>
+
+<!-- SLIDE 4 COUNTER -->
+<div class="swiper-slide">
+<h1>Udah Berapa Lama Kita? 🥺</h1>
+<div class="counter" id="loveCounter"></div>
+<p>Dan aku masih mau terus sama kamu 💕</p>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="swiper-slide">
+<h1>Kamu Mau Terus Sama Aku? 🥺💘</h1>
+<button class="yesBtn" onclick="jawabYes()">Iya dong 💕</button>
+<button class="noBtn" id="noBtn">Hmm... 😳</button>
+<p id="jawaban" style="margin-top:20px;font-size:20px;"></p>
+</div>
+
+</div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="hari-bersamanya.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
-
-<h1>Happy Valentine Sayang ❤️</h1>
-
-<div class="typing" id="typing"></div>
-
-<div class="gift" onclick="openGift()">🎁</div>
-
-<div id="surprise" class="hidden">
-
-<!-- SURAT CINTA -->
-<div style="max-width:700px; margin:auto; font-size:18px; line-height:1.8; padding:20px;">
-
-<p>Sayangku ❤️,</p>
-
-<p>
-Sejak pertama kali aku kenal kamu, hidup aku berubah jadi lebih indah.
-You are not just someone I love, you are my comfort, my happiness, and my safe place.
-</p>
-
-<p>
-Aku mungkin bukan orang yang sempurna,
-but every day I try to be better because of you.
-</p>
-
-<p>
-Kamu adalah alasan aku tersenyum tanpa alasan.
-You make my world brighter just by being in it.
-</p>
-
-<p>
-Aku nggak janji hidup kita akan selalu mudah,
-but I promise I will always choose you, again and again.
-</p>
-
-<p>
-Happy Valentine’s Day, my love 💕
-You are my today, my tomorrow, and my forever.
-</p>
-
-<p>With all my heart,<br>Your favorite person ❤️</p>
-
-</div>
-
-<!-- GALERI -->
-<div class="gallery">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-</div>
-
-<!-- REQUEST -->
-<h2>Will You Stay With Me Forever? 💍</h2>
-
-<button class="yesBtn" onclick="answerYes()">Yes, Of Course ❤️</button>
-<button class="noBtn" id="noBtn" onmouseover="moveButton()">No 😢</button>
-
-<p id="response" style="font-size:20px;"></p>
-
-</div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-// Typing Effect
-const text = "Untuk Kamu, Cinta Terindah Dalam Hidupku 💖";
-let i = 0;
-function typingEffect() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typingEffect, 80);
-    }
-}
-typingEffect();
+var swiper = new Swiper(".swiper",{direction:"horizontal",loop:false});
 
-// Open Gift + Play Music
-function openGift() {
-    document.getElementById("surprise").classList.remove("hidden");
-    const music = document.getElementById("music");
-    music.volume = 0.5;
+// HITUNG DARI 5 APRIL 2025
+var startDate = new Date("2025-04-05");
+var today = new Date();
+var diff = today - startDate;
+var days = Math.floor(diff / (1000*60*60*24));
+document.getElementById("loveCounter").innerHTML =
+days + " Hari Bersama ❤️";
+
+// HEART
+function createHearts(){
+  const container=document.querySelector('.hearts');
+  for(let i=0;i<30;i++){
+    let heart=document.createElement('span');
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=5+Math.random()*5+'s';
+    heart.style.opacity=Math.random();
+    container.appendChild(heart);
+  }
+}
+createHearts();
+
+// MUSIC + LIRIK PAS SLIDE FOTO
+var music=document.getElementById("bgMusic");
+var lyrics=document.getElementById("lyrics");
+
+swiper.on('slideChange',function(){
+  if(swiper.activeIndex===1){
     music.play();
-}
+    document.body.style.background=
+    "linear-gradient(135deg,#ff4d88,#ff99c8)";
+    showLyrics();
+  }
+});
 
-// Falling Hearts
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-}
-setInterval(createHeart, 300);
-
-// Yes Button
-function answerYes(){
-    document.getElementById("response").innerHTML =
-    "Yayyy ❤️ Aku janji bakal jaga kamu selalu 💕";
-    createConfetti();
-}
-
-// No Button Kabur
-function moveButton(){
-    const btn = document.getElementById("noBtn");
-    btn.style.position = "absolute";
-    btn.style.left = Math.random() * 80 + "vw";
-    btn.style.top = Math.random() * 80 + "vh";
-}
-
-// Confetti
-function createConfetti(){
-    for(let i=0;i<50;i++){
-        const conf = document.createElement("div");
-        conf.classList.add("confetti");
-        conf.style.left = Math.random() * 100 + "vw";
-        conf.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
-        conf.style.animationDuration = (Math.random()*3+2)+"s";
-        document.body.appendChild(conf);
-        setTimeout(()=>conf.remove(),5000);
+function showLyrics(){
+  lyrics.style.opacity=1;
+  var text="Ku menemukanmu saat ku terjatuh...";
+  var i=0;
+  var typing=setInterval(function(){
+    if(i<text.length){
+      lyrics.innerHTML+=text.charAt(i);
+      i++;
+    }else{
+      clearInterval(typing);
     }
+  },80);
 }
+
+// YES BUTTON
+function jawabYes(){
+  document.getElementById("jawaban").innerHTML=
+  "Yeyyy 💖 Aku seneng banget kamu pilih aku 😆💕";
+  confetti({particleCount:150,spread:90,origin:{y:0.6}});
+}
+
+// NO BUTTON KABUR
+var noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",function(){
+  var x=Math.random()*200-100;
+  var y=Math.random()*200-100;
+  noBtn.style.transform="translate("+x+"px,"+y+"px)";
+});
 
 </script>
 
