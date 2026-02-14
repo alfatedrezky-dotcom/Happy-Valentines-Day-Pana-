@@ -1,378 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000">
-<title>Our Era 💖</title>
+<title>Our Highschool Story</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
 body{
-font-family:'Poppins',sans-serif;
-background:#000;
-color:white;
-overflow:hidden;
-cursor:none;
-transition:0.5s;
+  background:#0c0c0c;
+  color:white;
+  overflow:hidden;
 }
 
-/* HEART CURSOR */
-.cursor{
-position:fixed;
-font-size:20px;
-pointer-events:none;
-z-index:9999;
+/* INTRO SCREEN */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:999;
+  transition:1s;
 }
 
-/* LOCK */
-#lock{
-position:fixed;
-width:100%;
-height:100vh;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-z-index:1000;
+#intro h1{
+  font-size:32px;
+  letter-spacing:3px;
+  opacity:0;
+  animation:fadeIn 2s forwards;
 }
 
-.fingerprint{
-font-size:60px;
-animation:pulse 1.5s infinite;
-cursor:pointer;
+#intro p{
+  margin-top:10px;
+  opacity:0;
+  animation:fadeIn 2s forwards;
+  animation-delay:1s;
 }
 
-@keyframes pulse{
-0%{opacity:0.4;}
-50%{opacity:1;}
-100%{opacity:0.4;}
+@keyframes fadeIn{
+  to{opacity:1;}
 }
 
-input{
-margin-top:15px;
-padding:10px;
-border-radius:20px;
-border:none;
-text-align:center;
-}
-
-button{
-margin-top:10px;
-padding:8px 20px;
-border:none;
-border-radius:20px;
-cursor:pointer;
-}
-
-/* MAIN */
 .container{
-display:none;
-height:100vh;
-overflow-y:scroll;
-scroll-snap-type:y mandatory;
+  height:100vh;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
 }
 
-section{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-scroll-snap-align:start;
-position:relative;
-padding:20px;
+.section{
+  height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  padding:30px;
 }
 
 .bg{
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-filter:blur(8px) brightness(0.5);
-z-index:-1;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  filter:blur(20px) brightness(0.35);
+  z-index:-1;
+  transform:scale(1.3);
+  transition:transform 0.3s ease;
 }
 
-/* LOVE BURST */
-.love{
-position:absolute;
-font-size:20px;
-animation:pop 1s forwards;
-}
-@keyframes pop{
-to{transform:translateY(-120px);opacity:0;}
-}
-
-/* FLOWER */
-.flower{
-position:fixed;
-top:-50px;
-font-size:20px;
-animation:fall linear infinite;
-}
-@keyframes fall{
-to{transform:translateY(110vh);}
+.photo{
+  width:260px;
+  border-radius:20px;
+  box-shadow:0 0 50px rgba(255,0,70,0.6);
+  margin-bottom:20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
 
-/* GLOW */
+.section.active .photo{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h2{
+  font-size:26px;
+  margin-bottom:15px;
+}
+
+.text{
+  font-weight:300;
+  max-width:320px;
+  margin:auto;
+  line-height:1.7;
+}
+
 .glow{
-animation:glow 2s infinite alternate;
-}
-@keyframes glow{
-from{text-shadow:0 0 5px pink;}
-to{text-shadow:0 0 25px hotpink;}
+  color:#ff004c;
 }
 
-/* LOVE METER */
-#loveMeter{
-position:fixed;
-bottom:15px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(255,255,255,0.1);
-padding:10px 20px;
-border-radius:20px;
-font-size:14px;
+button{
+  margin-top:20px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff004c;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
 }
-
-/* FLOATING MUSIC BUTTON */
-#musicBtn{
-position:fixed;
-top:15px;
-right:15px;
-background:rgba(255,255,255,0.2);
-border:none;
-padding:8px 15px;
-border-radius:20px;
-color:white;
-}
-
-audio{display:none;}
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor">💖</div>
-
-<!-- LOCK SCREEN -->
-<div id="lock">
-<h2 id="typing"></h2>
-<div class="fingerprint" onclick="unlock()">🖐</div>
-<input type="password" id="pass" placeholder="Backup Password">
-<button onclick="checkPass()">Enter</button>
-<p id="wrong" style="color:red;"></p>
+<div id="intro">
+  <h1>Our Highschool Story</h1>
+  <p>tap to start</p>
 </div>
-
-<!-- MAIN CONTENT -->
-<div class="container" id="main">
-
-<section onclick="lovePop(event)">
-<div class="bg" style="background-image:url('IMG-20251101-WA0457.jpg')"></div>
-<h1 class="glow">Still Young, Still Us 💕</h1>
-<p id="quote"></p>
-</section>
-
-<section onclick="lovePop(event)">
-<div class="bg" style="background-image:url('IMG-20250907-WA0503.jpg')"></div>
-<h1>Random But Serious 😌</h1>
-<div id="counter"></div>
-<div id="clock"></div>
-<button onclick="speakLove()">Play Voice 🎙</button>
-</section>
-
-<section onclick="secretTap(event)">
-<div class="bg" style="background-image:url('IMG-20250909-WA0444.jpg')"></div>
-<h1>Growing Together 🌸</h1>
-<p>Double tap layar buat surprise 😏</p>
-</section>
-
-<section onclick="explodeConfetti()">
-<div class="bg" style="background-image:url('IMG-20251101-WA0457.jpg')"></div>
-<h1>1 Year Countdown 🎉</h1>
-<div id="yearCounter"></div>
-</section>
-
-</div>
-
-<div id="loveMeter">Love Level: 0%</div>
-<button id="musicBtn" onclick="toggleMusic()">🔊</button>
 
 <audio id="music" loop>
-<source src="music.mp3" type="audio/mp3">
+  <source src="music.mp3" type="audio/mp3">
 </audio>
 
+<div class="container">
+
+<section class="section">
+  <div class="bg" style="background-image:url('IMG-20251101-WA0457.jpg')"></div>
+  <div>
+    <img src="IMG-20251101-WA0457.jpg" class="photo">
+    <h2>Hey you...</h2>
+    <p class="text">
+      Gue ga tau nanti bakal sejauh apa.
+      Tapi sekarang?
+      Bareng lo aja udah cukup bikin gue tenang.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="bg" style="background-image:url('IMG-20250907-WA0503.jpg')"></div>
+  <div>
+    <img src="IMG-20250907-WA0503.jpg" class="photo">
+    <h2 class="glow">Still Us.</h2>
+    <p class="text">
+      Masih SMA.
+      Masih belajar.
+      Masih sering ketawa random.
+      And honestly?
+      I like this version of us.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="bg" style="background-image:url('IMG-20250909-WA0444.jpg')"></div>
+  <div>
+    <img src="IMG-20250909-WA0444.jpg" class="photo">
+    <h2>Not Forever Yet.</h2>
+    <p class="text">
+      Ini bukan janji selamanya dulu.
+      Ini cuma kita…
+      Nikmatin masa SMA bareng.
+      And I don’t wanna rush it.
+    </p>
+  </div>
+</section>
+
+</div>
+
 <script>
+const intro = document.getElementById("intro");
+const music = document.getElementById("music");
 
-/* HEART CURSOR */
-const cursor=document.getElementById("cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.pageX+"px";
-cursor.style.top=e.pageY+"px";
+intro.addEventListener("click",()=>{
+  intro.style.opacity="0";
+  setTimeout(()=> intro.style.display="none",1000);
+  music.play();
 });
 
-/* Typing */
-let text="Unlock our little world 💖";
-let i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,50);
-}}
-type();
+const sections = document.querySelectorAll(".section");
 
-/* Unlock */
-function unlock(){
-document.getElementById("lock").style.display="none";
-document.getElementById("main").style.display="block";
-startMusic();
-}
-
-function checkPass(){
-if(document.getElementById("pass").value==="05042025") unlock();
-else document.getElementById("wrong").innerHTML="Wrong 😭";
-}
-
-/* MUSIC CONTROL */
-let music=document.getElementById("music");
-function startMusic(){
-music.volume=0.5;
-music.play();
-}
-function toggleMusic(){
-if(music.paused){
-music.play();
-}else{
-music.pause();
-}
-}
-
-/* FLOWERS */
-for(let i=0;i<30;i++){
-let f=document.createElement("div");
-f.classList.add("flower");
-f.innerHTML="🌸";
-f.style.left=Math.random()*100+"vw";
-f.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(f);
-}
-
-/* LOVE + METER */
-let love=0;
-function lovePop(e){
-let h=document.createElement("div");
-h.classList.add("love");
-h.innerHTML="💖";
-h.style.left=e.clientX+"px";
-h.style.top=e.clientY+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),1000);
-
-if(love<100){love+=2;}
-document.getElementById("loveMeter").innerHTML="Love Level: "+love+"%";
-}
-
-/* DOUBLE TAP BIG HEART */
-let lastTap=0;
-document.addEventListener("touchend",function(e){
-let current=new Date().getTime();
-if(current-lastTap<300){
-let big=document.createElement("div");
-big.style.position="fixed";
-big.style.left="50%";
-big.style.top="50%";
-big.style.transform="translate(-50%,-50%)";
-big.style.fontSize="100px";
-big.innerHTML="💖";
-document.body.appendChild(big);
-setTimeout(()=>big.remove(),1000);
-}
-lastTap=current;
+window.addEventListener("scroll",()=>{
+  let index = Math.round(window.scrollY / window.innerHeight);
+  sections.forEach((sec,i)=>{
+    if(i === index){
+      sec.classList.add("active");
+    } else {
+      sec.classList.remove("active");
+    }
+  });
 });
-
-/* COUNTER */
-function updateCounter(){
-let start=new Date("April 5, 2025").getTime();
-let now=new Date().getTime();
-let diff=now-start;
-
-let d=Math.floor(diff/(1000*60*60*24));
-let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-let m=Math.floor((diff%(1000*60*60))/(1000*60));
-let s=Math.floor((diff%(1000*60))/1000);
-
-document.getElementById("counter").innerHTML=
-d+"d "+h+"h "+m+"m "+s+"s together 💕";
-}
-setInterval(updateCounter,1000);
-
-/* COUNTDOWN 1 YEAR */
-function updateYear(){
-let target=new Date("April 5, 2026").getTime();
-let now=new Date().getTime();
-let diff=target-now;
-let d=Math.floor(diff/(1000*60*60*24));
-document.getElementById("yearCounter").innerHTML=d+" days left 💖";
-}
-setInterval(updateYear,1000);
-
-/* CLOCK */
-setInterval(()=>{
-let now=new Date();
-document.getElementById("clock").innerHTML=
-now.toLocaleTimeString();
-},1000);
-
-/* RANDOM QUOTE */
-let quotes=[
-"I like us.",
-"You feel like home.",
-"Still choosing you.",
-"This era hits different."
-];
-document.getElementById("quote").innerHTML=
-quotes[Math.floor(Math.random()*quotes.length)];
-
-/* VOICE */
-function speakLove(){
-let msg=new SpeechSynthesisUtterance("I really like you.");
-speechSynthesis.speak(msg);
-}
-
-/* CONFETTI */
-function explodeConfetti(){
-for(let i=0;i<60;i++){
-let c=document.createElement("div");
-c.innerHTML="🎉";
-c.style.position="fixed";
-c.style.left=Math.random()*100+"vw";
-c.style.top="0";
-c.style.fontSize="20px";
-c.style.animation="fall 3s linear forwards";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),3000);
-}
-}
-
-/* SECRET TAP */
-let tap=0;
-function secretTap(e){
-tap++;
-lovePop(e);
-if(tap==5){
-alert("Okay you found it 😭💖 I really really like you.");
-tap=0;
-}
-}
-
 </script>
 
 </body>
