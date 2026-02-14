@@ -24,7 +24,7 @@ color:white;
 100%{background-position:0% 50%;}
 }
 
-/* SCROLL CONTAINER */
+/* CONTAINER SWIPE */
 .container{
 display:flex;
 width:300vw;
@@ -59,7 +59,7 @@ z-index:1000;
 transition:0.3s;
 }
 
-/* glass style */
+/* glass */
 .glass{
 background:rgba(255,255,255,0.15);
 padding:20px;
@@ -86,7 +86,7 @@ border-radius:20px;
 display:block;
 }
 
-/* grid foto */
+/* photo grid */
 .photo-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -96,7 +96,7 @@ width:100%;
 max-width:900px;
 }
 
-/* video */
+/* video grid */
 .video-grid{
 display:flex;
 gap:20px;
@@ -157,7 +157,7 @@ font-weight:600;
 
 <div class="frame">
 <video controls>
-<source src="VID-20260117-WA0655.mp4" type="video/mp4">
+<source src="VID-20260214-WA0011.mp4" type="video/mp4">
 </video>
 </div>
 </div>
@@ -188,6 +188,41 @@ const container=document.getElementById("container");
 const progress=document.getElementById("progress");
 const music=document.getElementById("music");
 
+let musicStarted=false;
+
+/* FADE IN MUSIC */
+function fadeInAudio(){
+music.volume=0;
+music.play().catch(()=>{});
+let vol=0;
+let fade=setInterval(()=>{
+if(vol<1){
+vol+=0.05;
+music.volume=vol;
+}else{
+clearInterval(fade);
+}
+},200);
+}
+
+/* START MUSIC SAAT INTERAKSI PERTAMA */
+function startMusicOnce(){
+if(!musicStarted){
+fadeInAudio();
+musicStarted=true;
+}
+}
+
+container.addEventListener("scroll",startMusicOnce);
+container.addEventListener("touchstart",startMusicOnce);
+container.addEventListener("click",startMusicOnce);
+
+/* PROGRESS */
+container.addEventListener("scroll",()=>{
+let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
+progress.style.width=(slide/3*100)+"%";
+});
+
 /* TYPEWRITER */
 const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
 let i=0;
@@ -214,18 +249,6 @@ const seconds=Math.floor((distance%(1000*60))/1000);
 document.getElementById("countdown").innerHTML=
 days+" hari "+hours+" jam "+minutes+" menit "+seconds+" detik 💖";
 },1000);
-
-/* progress + music detect */
-container.addEventListener("scroll",()=>{
-let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
-progress.style.width=(slide/3*100)+"%";
-
-if(slide===2){
-music.play();
-}else{
-music.pause();
-}
-});
 </script>
 
 </body>
