@@ -6,12 +6,7 @@
 <title>For Pana 💖</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
 overflow:hidden;
@@ -26,25 +21,19 @@ color:white;
 100%{background-position:100% 50%;}
 }
 
-/* LOADING */
-#loading{
+/* progress bar */
+#progress{
 position:fixed;
-width:100%;
-height:100%;
-background:#ff4d6d;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:24px;
-z-index:999;
-animation:fadeOut 2s 3s forwards;
+top:0;
+left:0;
+height:5px;
+background:white;
+width:33%;
+transition:0.5s;
+z-index:1000;
 }
 
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
-
-/* SLIDE */
+/* slide */
 .slide{
 position:absolute;
 width:100%;
@@ -65,54 +54,48 @@ opacity:1;
 transform:scale(1);
 }
 
-h1 span{
-text-shadow:0 0 10px white,0 0 25px white;
-}
-
 button{
-margin-top:20px;
-padding:10px 25px;
+margin:10px;
+padding:10px 20px;
 border:none;
 border-radius:30px;
 background:white;
 color:#ff4d6d;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.1);
+.carousel{
+position:relative;
+width:220px;
+height:300px;
+overflow:hidden;
+border-radius:20px;
 }
 
-.gallery{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
+.carousel img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:1s;
+animation:zoom 6s infinite alternate;
 }
 
-.gallery img{
-width:120px;
-border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.3);
+.carousel img.active{
+opacity:1;
+}
+
+@keyframes zoom{
+0%{transform:scale(1);}
+100%{transform:scale(1.1);}
 }
 
 video{
 width:220px;
+margin-top:15px;
 border-radius:15px;
-margin-top:10px;
-}
-
-.heart{
-position:fixed;
-top:-10px;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh);}
-100%{transform:translateY(110vh);}
 }
 
 #countdown{
@@ -124,21 +107,23 @@ font-size:18px;
 
 <body>
 
-<div id="loading">For Pana 💌</div>
+<div id="progress"></div>
 
 <!-- SLIDE 1 -->
 <div class="slide active" id="slide1">
-<h1>for <span>Pana</span> 💖</h1>
+<h1>for Pana 💖</h1>
 <p id="typing"></p>
-<button onclick="nextSlide()">tap next ➜</button>
+<div>
+<button onclick="nextSlide()">next ➜</button>
+</div>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide" id="slide2">
 <h1>our memories 📸</h1>
 
-<div class="gallery">
-<img src="foto1.jpg">
+<div class="carousel">
+<img src="foto1.jpg" class="active">
 <img src="foto2.jpg">
 <img src="foto3.jpg">
 </div>
@@ -151,35 +136,52 @@ font-size:18px;
 <source src="music.mp3" type="audio/mp3">
 </audio>
 
+<div>
+<button onclick="prevSlide()">⬅ back</button>
 <button onclick="nextSlide()">next ➜</button>
+</div>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide" id="slide3">
 <h1>happy valentine 💘</h1>
-<p>
-selamat hari valentine yaa.  
-almost one year… and i still choose you. always.
-</p>
+<p>almost 1 year… and i still choose you. always.</p>
 <div id="countdown"></div>
+<div>
+<button onclick="prevSlide()">⬅ back</button>
+</div>
 </div>
 
 <script>
 let current=1;
+const totalSlides=3;
+
+function updateProgress(){
+document.getElementById("progress").style.width=(current/totalSlides*100)+"%";
+}
 
 function nextSlide(){
 document.getElementById("slide"+current).classList.remove("active");
 current++;
-if(current>3) current=1;
+if(current>totalSlides) current=totalSlides;
 document.getElementById("slide"+current).classList.add("active");
+updateProgress();
 
 if(current==2){
 document.getElementById("music").play();
 }
 }
 
+function prevSlide(){
+document.getElementById("slide"+current).classList.remove("active");
+current--;
+if(current<1) current=1;
+document.getElementById("slide"+current).classList.add("active");
+updateProgress();
+}
+
 // TYPEWRITER
-const text="seriously… makasih banget ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
+const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you 🤍";
 let i=0;
 function type(){
 if(i<text.length){
@@ -190,17 +192,15 @@ setTimeout(type,35);
 }
 type();
 
-// HEART ANIMATION
-function fallingHeart(){
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*25)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-}
-setInterval(fallingHeart,800);
+// CAROUSEL AUTO
+let slideIndex=0;
+const slides=document.querySelectorAll(".carousel img");
+
+setInterval(()=>{
+slides[slideIndex].classList.remove("active");
+slideIndex=(slideIndex+1)%slides.length;
+slides[slideIndex].classList.add("active");
+},3000);
 
 // COUNTDOWN
 const targetDate=new Date("May 5, 2026 00:00:00").getTime();
@@ -214,9 +214,11 @@ const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
 const seconds=Math.floor((distance%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML=
-"menuju 1 tahun kita:<br>"+days+" hari "+
-hours+" jam "+minutes+" menit "+seconds+" detik 💖";
+days+" hari "+hours+" jam "+
+minutes+" menit "+seconds+" detik 💖";
 },1000);
+
+updateProgress();
 </script>
 
 </body>
