@@ -48,12 +48,14 @@ body{
 
 .frame{
   background:#a10000;
+  IMG-20251101-WA0457.jpg
   padding:10px;
   border:8px solid gold;
   border-radius:15px;
 }
 
 .frame img{
+  IMG-20250907-WA0503.jpp
   width:200px;
   height:250px;
   object-fit:cover;
