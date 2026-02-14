@@ -3,143 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our SMA Love Story 💖</title>
+<title>Our Love Story 💖</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 <style>
-body {
-  margin: 0;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ff4e88, #ff9ac6);
-  overflow: hidden;
-  color: white;
-  text-align: center;
+  background: radial-gradient(circle at top left, #ff4e88, #ff0066, #ff85b3);
+  color:white;
+  overflow:hidden;
 }
 
-.swiper {
-  width: 100%;
-  height: 100vh;
+.swiper{
+  width:100%;
+  height:100vh;
 }
 
-.swiper-slide {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.swiper-slide{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:20px;
 }
 
-img {
-  width: 80%;
-  max-width: 300px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.6);
-  margin-bottom: 20px;
+.card{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  padding:25px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,255,255,0.3);
+  max-width:320px;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.card img{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:15px;
+  box-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
-p {
-  font-size: 16px;
-  max-width: 300px;
+h1{
+  font-size:26px;
+  margin-bottom:10px;
 }
 
-.counter {
-  font-size: 20px;
-  margin-top: 15px;
-  font-weight: bold;
+p{
+  font-size:15px;
+  line-height:1.6;
 }
 
-.hearts {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
+.counter{
+  margin-top:15px;
+  font-weight:bold;
+  font-size:18px;
+  color:#fff;
 }
 
-.heart {
-  position: absolute;
-  color: rgba(255,255,255,0.3);
-  font-size: 20px;
-  animation: float 10s infinite linear;
+.floating-hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
 }
 
-@keyframes float {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(-10vh);}
+.heart{
+  position:absolute;
+  color:white;
+  opacity:0.4;
+  animation:float 8s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hearts"></div>
+<div class="floating-hearts"></div>
 
 <div class="swiper">
   <div class="swiper-wrapper">
 
-    <!-- Slide 1 -->
     <div class="swiper-slide">
-      <h1>Hi Cantik 💕</h1>
-      <p>
-        Ga nyangka ya kita masih bareng sampai sekarang…  
-        still strong, still crazy, still us 😌💖
-      </p>
+      <div class="card">
+        <h1>Hai Cantik 💕</h1>
+        <p>
+          Ga nyangka ya kita masih bareng sampe sekarang…
+          still strong, still crazy, still us 😌💖
+        </p>
+      </div>
     </div>
 
-    <!-- Slide 2 -->
     <div class="swiper-slide">
-      <img src="IMG-20251101-WA0457.jpg">
-      <p>
-        Every moment sama kamu tuh vibes nya beda banget.  
-        Kayak dunia auto slow motion tiap liat kamu 😆✨
-      </p>
+      <div class="card">
+        <img src="IMG-20251101-WA0457.jpg">
+        <p>
+          Setiap momen sama kamu tuh vibes nya beda banget.
+          Dunia auto slow motion tiap liat kamu 😆✨
+        </p>
+      </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="swiper-slide">
-      <img src="IMG-20250907-WA0503.jpg">
-      <p>
-        Makasih ya udah stay,  
-        walaupun aku kadang ngeselin dikit 🤏😂  
-        but you still choose me.
-      </p>
+      <div class="card">
+        <img src="IMG-20250907-WA0503.jpg">
+        <p>
+          Makasih ya udah stay,
+          walaupun aku kadang ngeselin dikit 🤏😂
+          but you still choose me.
+        </p>
+      </div>
     </div>
 
-    <!-- Slide 4 -->
     <div class="swiper-slide">
-      <img src="IMG-20250909-WA0444.jpg">
-      <p>
-        Kita masih SMA, masih banyak mimpi,  
-        but I’m really happy I get to grow with you 🫶
-      </p>
-      <div class="counter" id="counter"></div>
+      <div class="card">
+        <img src="IMG-20250909-WA0444.jpg">
+        <p>
+          Kita masih SMA, masih banyak mimpi,
+          but I’m really happy I grow with you 🫶
+        </p>
+        <div class="counter" id="counter"></div>
+      </div>
     </div>
 
-    <!-- Slide 5 -->
     <div class="swiper-slide">
-      <h1>I Love You 💗</h1>
-      <p>
-        Ga perlu janji gede-gede.  
-        Yang penting kita terus bareng,  
-        support each other, and stay loyal 💍✨  
-        You’re my favorite person, always.
-      </p>
+      <div class="card">
+        <h1>I Love You 💗</h1>
+        <p>
+          Ga perlu janji lebay.
+          Yang penting kita tetap bareng,
+          support each other, stay loyal,
+          and keep choosing each other every day 💕
+        </p>
 
-      <br>
+        <br>
 
-      <!-- Spotify Lagu Hari Bersamanya -->
-      <iframe style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/2Z8WuEywRWYTKe1NybPQEW?utm_source=generator" 
-      width="300" height="80" frameBorder="0" 
-      allowfullscreen="" 
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-      </iframe>
+        <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/2Z8WuEywRWYTKe1NybPQEW"
+        width="250" height="80"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+      </div>
     </div>
 
   </div>
@@ -148,28 +167,27 @@ p {
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-const swiper = new Swiper('.swiper', {
-  direction: 'horizontal',
-  loop: false,
+new Swiper('.swiper',{
+  direction:'horizontal'
 });
 
 const startDate = new Date("2025-04-05");
 const today = new Date();
 const diffTime = today - startDate;
-const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+const diffDays = Math.floor(diffTime / (1000*60*60*24));
 
 document.getElementById("counter").innerHTML =
-  "Udah bareng " + diffDays + " hari dan counting terus 💕🔥";
+"Udah bareng " + diffDays + " hari dan masih jalan terus 💕🔥";
 
-// Floating hearts
-const heartsContainer = document.querySelector('.hearts');
-for (let i = 0; i < 30; i++) {
-  let heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 10 + "px";
-  heart.innerHTML = "❤";
-  heartsContainer.appendChild(heart);
+const container = document.querySelector(".floating-hearts");
+for(let i=0;i<25;i++){
+  let heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  heart.style.animationDuration=(Math.random()*5+5)+"s";
+  container.appendChild(heart);
 }
 </script>
 
