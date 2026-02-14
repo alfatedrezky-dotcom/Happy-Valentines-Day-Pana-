@@ -3,193 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will You Be Mine? ❤️</title>
+<title>Our SMA Love Story 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  background:#7b0000;
-  color:white;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff4e88, #ff9ac6);
+  overflow: hidden;
+  color: white;
+  text-align: center;
 }
 
-/* SECTION STYLE */
-.section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px;
+.swiper {
+  width: 100%;
+  height: 100vh;
 }
 
-/* HEADER */
-.title{
-  font-family:'Playfair Display',serif;
-  font-size:40px;
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-.subtitle{
-  font-size:20px;
-  margin-bottom:20px;
+img {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.6);
+  margin-bottom: 20px;
 }
 
-/* FRAME FOTO */
-.gallery{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-.frame{
-  background:#a10000;
-  IMG-20251101-WA0457.jpg
-  padding:10px;
-  border:8px solid gold;
-  border-radius:15px;
+p {
+  font-size: 16px;
+  max-width: 300px;
 }
 
-.frame img{
-  IMG-20250907-WA0503.jpp
-  width:200px;
-  height:250px;
-  object-fit:cover;
-  border-radius:10px;
+.counter {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
-/* SURAT */
-.letter{
-  background:#fff5f5;
-  color:#333;
-  padding:30px;
-  border-radius:10px;
-  max-width:600px;
-  font-size:15px;
-  line-height:1.7;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
-/* HEART SECTION */
-.big-heart{
-  font-size:120px;
-  color:#ff2e63;
-  animation:beat 1s infinite;
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.3);
+  font-size: 20px;
+  animation: float 10s infinite linear;
 }
 
-@keyframes beat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.1);}
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
 }
-
-/* SAVE DATE */
-.date-box{
-  background:#8b0000;
-  padding:30px;
-  border-radius:20px;
-  font-size:20px;
-}
-
-/* BUTTON */
-button{
-  padding:15px 30px;
-  font-size:18px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  margin-top:20px;
-}
-
-.yes{background:white;color:#7b0000;}
-.no{background:#ff2e63;color:white;position:relative;}
-
 </style>
 </head>
+
 <body>
 
-<!-- SECTION 1 -->
-<div class="section">
-  <div class="subtitle">sooo...</div>
-  <div class="title">Will You Be My Valentine? ❤️</div>
-</div>
+<div class="hearts"></div>
 
-<!-- SECTION 2 FOTO -->
-<div class="section">
-  <h2 style="margin-bottom:20px;">us being cute n stuff 📸</h2>
-  <div class="gallery">
-    <div class="frame"><img src="foto1.jpg"></div>
-    <div class="frame"><img src="foto2.jpg"></div>
-    <div class="frame"><img src="foto3.jpg"></div>
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <!-- Slide 1 -->
+    <div class="swiper-slide">
+      <h1>Hi Cantik 💕</h1>
+      <p>
+        Ga nyangka ya kita masih bareng sampai sekarang…  
+        still strong, still crazy, still us 😌💖
+      </p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="swiper-slide">
+      <img src="IMG-20251101-WA0457.jpg">
+      <p>
+        Every moment sama kamu tuh vibes nya beda banget.  
+        Kayak dunia auto slow motion tiap liat kamu 😆✨
+      </p>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="swiper-slide">
+      <img src="IMG-20250907-WA0503.jpg">
+      <p>
+        Makasih ya udah stay,  
+        walaupun aku kadang ngeselin dikit 🤏😂  
+        but you still choose me.
+      </p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="swiper-slide">
+      <img src="IMG-20250909-WA0444.jpg">
+      <p>
+        Kita masih SMA, masih banyak mimpi,  
+        but I’m really happy I get to grow with you 🫶
+      </p>
+      <div class="counter" id="counter"></div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="swiper-slide">
+      <h1>I Love You 💗</h1>
+      <p>
+        Ga perlu janji gede-gede.  
+        Yang penting kita terus bareng,  
+        support each other, and stay loyal 💍✨  
+        You’re my favorite person, always.
+      </p>
+
+      <br>
+
+      <!-- Spotify Lagu Hari Bersamanya -->
+      <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/track/2Z8WuEywRWYTKe1NybPQEW?utm_source=generator" 
+      width="300" height="80" frameBorder="0" 
+      allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </div>
+
   </div>
 </div>
 
-<!-- SECTION 3 SURAT -->
-<div class="section">
-  <div class="letter">
-    <h3 style="font-family:'Playfair Display',serif;">hey you 🤍</h3>
-    <p>
-      i don’t really know how to say this without sounding cringe,
-      but you matter to me. like… for real.
-    </p>
-    <p>
-      sekolah jadi lebih seru since i met you.
-      ngobrol random, ketawa ga jelas,
-      bahkan tugas yang bikin stress pun
-      jadi kerasa lighter when i'm with you.
-    </p>
-    <p>
-      i’m not promising some movie-type romance,
-      but i promise i’ll stay,
-      stay caring,
-      stay choosing you.
-    </p>
-    <p>
-      so yeah…
-      happy valentine’s day, pretty 💌
-    </p>
-  </div>
-</div>
-
-<!-- SECTION 4 HEART -->
-<div class="section">
-  <div class="big-heart">❤️</div>
-  <h2>would you keep vibing with me?</h2>
-
-  <button class="yes" onclick="yesClick()">obviously yes 😌</button>
-  <button class="no" id="noBtn">hmm...</button>
-
-  <p id="answer" style="margin-top:20px;font-size:18px;"></p>
-</div>
-
-<!-- SECTION 5 SAVE DATE -->
-<div class="section">
-  <div class="date-box">
-    <h2 style="font-family:'Playfair Display',serif;">our special day</h2>
-    <p>5 April 2025</p>
-    <p>still counting the days together 💞</p>
-  </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-
-// YES BUTTON
-function yesClick(){
-  document.getElementById("answer").innerHTML =
-  "hehe i knew it 😎💘 we're kinda iconic ngl";
-}
-
-// NO BUTTON KABUR
-var noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",function(){
-  var x=Math.random()*200-100;
-  var y=Math.random()*200-100;
-  noBtn.style.transform="translate("+x+"px,"+y+"px)";
+const swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  loop: false,
 });
 
+const startDate = new Date("2025-04-05");
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+document.getElementById("counter").innerHTML =
+  "Udah bareng " + diffDays + " hari dan counting terus 💕🔥";
+
+// Floating hearts
+const heartsContainer = document.querySelector('.hearts');
+for (let i = 0; i < 30; i++) {
+  let heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 10 + "px";
+  heart.innerHTML = "❤";
+  heartsContainer.appendChild(heart);
+}
 </script>
 
 </body>
