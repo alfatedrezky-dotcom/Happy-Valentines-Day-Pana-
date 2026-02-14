@@ -3,236 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultimate SMA Love 💕</title>
+<title>Will You Be Mine? ❤️</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-  overflow:hidden;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  background:#7b0000;
   color:white;
-  transition:1s;
+  overflow-x:hidden;
 }
 
-/* LOADING */
-#loading{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:#ff4d88;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:28px;
-  z-index:9999;
-  animation:fadeOut 3s forwards 2s;
-}
-
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden;}
-}
-
-.swiper{width:100%;height:100vh;}
-
-.swiper-slide{
+/* SECTION STYLE */
+.section{
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:25px;
+  padding:40px 20px;
 }
 
-h1{font-size:30px;margin-bottom:15px;}
-p{max-width:700px;line-height:1.7;font-size:17px;margin-bottom:15px;}
+/* HEADER */
+.title{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+}
 
-img{
-  width:220px;
-  height:320px;
+.subtitle{
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+/* FRAME FOTO */
+.gallery{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.frame{
+  background:#a10000;
+  padding:10px;
+  border:8px solid gold;
+  border-radius:15px;
+}
+
+.frame img{
+  width:200px;
+  height:250px;
   object-fit:cover;
+  border-radius:10px;
+}
+
+/* SURAT */
+.letter{
+  background:#fff5f5;
+  color:#333;
+  padding:30px;
+  border-radius:10px;
+  max-width:600px;
+  font-size:15px;
+  line-height:1.7;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* HEART SECTION */
+.big-heart{
+  font-size:120px;
+  color:#ff2e63;
+  animation:beat 1s infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+}
+
+/* SAVE DATE */
+.date-box{
+  background:#8b0000;
+  padding:30px;
   border-radius:20px;
-  box-shadow:0 0 20px rgba(255,255,255,0.6);
-  margin:10px;
-  transition:0.4s;
-}
-img:hover{transform:scale(1.07);}
-
-.typing{
-  border-right:3px solid white;
-  white-space:nowrap;
-  overflow:hidden;
-  width:0;
-  animation:typing 4s steps(40,end) forwards;
-}
-@keyframes typing{from{width:0}to{width:100%}}
-
-.hearts{
-  position:fixed;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  top:0;
-  left:0;
-  pointer-events:none;
-}
-.hearts span{
-  position:absolute;
-  bottom:-20px;
-  width:15px;
-  height:15px;
-  background:white;
-  transform:rotate(45deg);
-  animation:float 8s linear infinite;
-}
-@keyframes float{
-  0%{transform:translateY(0) rotate(45deg); opacity:1;}
-  100%{transform:translateY(-1000px) rotate(45deg); opacity:0;}
+  font-size:20px;
 }
 
-.counter{font-size:22px;margin-top:10px;font-weight:bold;}
-
+/* BUTTON */
 button{
   padding:15px 30px;
   font-size:18px;
   border:none;
   border-radius:30px;
   cursor:pointer;
-  margin:10px;
-  transition:0.3s;
+  margin-top:20px;
 }
 
-.yesBtn{background:white;color:#ff4d88;}
-.noBtn{background:#ff4d88;color:white;position:relative;}
+.yes{background:white;color:#7b0000;}
+.no{background:#ff2e63;color:white;position:relative;}
 
 </style>
 </head>
 <body>
 
-<div id="loading">Untuk Kamu ❤️</div>
-<div class="hearts"></div>
-
-<div class="swiper">
-<div class="swiper-wrapper">
-
-<!-- SLIDE 1 -->
-<div class="swiper-slide">
-<h1 class="typing">Hai Cantikku 💕</h1>
-<p>
-Kita masih sama-sama pakai seragam,
-masih sama-sama belajar,
-dan aku seneng banget bisa jalanin masa SMA ini bareng kamu.
-</p>
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="subtitle">sooo...</div>
+  <div class="title">Will You Be My Valentine? ❤️</div>
 </div>
 
-<!-- SLIDE 2 FOTO -->
-<div class="swiper-slide">
-<h1>Our Moments 📸</h1>
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<p id="lyrics" style="margin-top:15px;font-style:italic;opacity:0;"></p>
+<!-- SECTION 2 FOTO -->
+<div class="section">
+  <h2 style="margin-bottom:20px;">us being cute n stuff 📸</h2>
+  <div class="gallery">
+    <div class="frame"><img src="foto1.jpg"></div>
+    <div class="frame"><img src="foto2.jpg"></div>
+    <div class="frame"><img src="foto3.jpg"></div>
+  </div>
 </div>
 
-<!-- SLIDE 3 -->
-<div class="swiper-slide">
-<h1>For You ❤️</h1>
-<p>
-You are my favorite person in school,
-my favorite notification,
-and my favorite part of every day.
-</p>
-<p>
-Aku nggak tau masa depan bakal gimana,
-tapi sekarang aku bahagia banget sama kamu 💖
-</p>
+<!-- SECTION 3 SURAT -->
+<div class="section">
+  <div class="letter">
+    <h3 style="font-family:'Playfair Display',serif;">hey you 🤍</h3>
+    <p>
+      i don’t really know how to say this without sounding cringe,
+      but you matter to me. like… for real.
+    </p>
+    <p>
+      sekolah jadi lebih seru since i met you.
+      ngobrol random, ketawa ga jelas,
+      bahkan tugas yang bikin stress pun
+      jadi kerasa lighter when i'm with you.
+    </p>
+    <p>
+      i’m not promising some movie-type romance,
+      but i promise i’ll stay,
+      stay caring,
+      stay choosing you.
+    </p>
+    <p>
+      so yeah…
+      happy valentine’s day, pretty 💌
+    </p>
+  </div>
 </div>
 
-<!-- SLIDE 4 COUNTER -->
-<div class="swiper-slide">
-<h1>Udah Berapa Lama Kita? 🥺</h1>
-<div class="counter" id="loveCounter"></div>
-<p>Dan aku masih mau terus sama kamu 💕</p>
+<!-- SECTION 4 HEART -->
+<div class="section">
+  <div class="big-heart">❤️</div>
+  <h2>would you keep vibing with me?</h2>
+
+  <button class="yes" onclick="yesClick()">obviously yes 😌</button>
+  <button class="no" id="noBtn">hmm...</button>
+
+  <p id="answer" style="margin-top:20px;font-size:18px;"></p>
 </div>
 
-<!-- SLIDE 5 -->
-<div class="swiper-slide">
-<h1>Kamu Mau Terus Sama Aku? 🥺💘</h1>
-<button class="yesBtn" onclick="jawabYes()">Iya dong 💕</button>
-<button class="noBtn" id="noBtn">Hmm... 😳</button>
-<p id="jawaban" style="margin-top:20px;font-size:20px;"></p>
+<!-- SECTION 5 SAVE DATE -->
+<div class="section">
+  <div class="date-box">
+    <h2 style="font-family:'Playfair Display',serif;">our special day</h2>
+    <p>5 April 2025</p>
+    <p>still counting the days together 💞</p>
+  </div>
 </div>
-
-</div>
-</div>
-
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-<source src="hari-bersamanya.mp3" type="audio/mpeg">
-</audio>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-var swiper = new Swiper(".swiper",{direction:"horizontal",loop:false});
-
-// HITUNG DARI 5 APRIL 2025
-var startDate = new Date("2025-04-05");
-var today = new Date();
-var diff = today - startDate;
-var days = Math.floor(diff / (1000*60*60*24));
-document.getElementById("loveCounter").innerHTML =
-days + " Hari Bersama ❤️";
-
-// HEART
-function createHearts(){
-  const container=document.querySelector('.hearts');
-  for(let i=0;i<30;i++){
-    let heart=document.createElement('span');
-    heart.style.left=Math.random()*100+'vw';
-    heart.style.animationDuration=5+Math.random()*5+'s';
-    heart.style.opacity=Math.random();
-    container.appendChild(heart);
-  }
-}
-createHearts();
-
-// MUSIC + LIRIK PAS SLIDE FOTO
-var music=document.getElementById("bgMusic");
-var lyrics=document.getElementById("lyrics");
-
-swiper.on('slideChange',function(){
-  if(swiper.activeIndex===1){
-    music.play();
-    document.body.style.background=
-    "linear-gradient(135deg,#ff4d88,#ff99c8)";
-    showLyrics();
-  }
-});
-
-function showLyrics(){
-  lyrics.style.opacity=1;
-  var text="Ku menemukanmu saat ku terjatuh...";
-  var i=0;
-  var typing=setInterval(function(){
-    if(i<text.length){
-      lyrics.innerHTML+=text.charAt(i);
-      i++;
-    }else{
-      clearInterval(typing);
-    }
-  },80);
-}
-
 // YES BUTTON
-function jawabYes(){
-  document.getElementById("jawaban").innerHTML=
-  "Yeyyy 💖 Aku seneng banget kamu pilih aku 😆💕";
-  confetti({particleCount:150,spread:90,origin:{y:0.6}});
+function yesClick(){
+  document.getElementById("answer").innerHTML =
+  "hehe i knew it 😎💘 we're kinda iconic ngl";
 }
 
 // NO BUTTON KABUR
