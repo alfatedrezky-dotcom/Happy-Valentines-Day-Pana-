@@ -3,152 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 💖</title>
+<title>For Pana 💖</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-  background: linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
-  background-size:300% 300%;
-  animation:bgMove 8s infinite alternate;
-  text-align:center;
-  color:white;
-  overflow-x:hidden;
+overflow:hidden;
+background:linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
+background-size:300% 300%;
+animation:bg 12s infinite alternate;
+color:white;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 50%;}
-  100%{background-position:100% 50%;}
+@keyframes bg{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
 }
 
-.container{
-  padding:30px 20px;
+/* LOADING */
+#loading{
+position:fixed;
+width:100%;
+height:100%;
+background:#ff4d6d;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:24px;
+z-index:999;
+animation:fadeOut 2s 3s forwards;
 }
 
-h1{
-  margin-bottom:15px;
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
 }
 
-.gallery{
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom:20px;
+/* SLIDE */
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+opacity:0;
+transform:scale(0.95);
+transition:0.8s ease;
 }
 
-.gallery img{
-  width:150px;
-  border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
-  transition:0.4s;
+.slide.active{
+opacity:1;
+transform:scale(1);
 }
 
-.gallery img:hover{
-  transform:scale(1.1);
-}
-
-p{
-  max-width:320px;
-  margin:0 auto 15px;
-  line-height:1.6;
+h1 span{
+text-shadow:0 0 10px white,0 0 25px white;
 }
 
 button{
-  padding:10px 25px;
-  border:none;
-  border-radius:30px;
-  background:white;
-  color:#ff4d6d;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
+margin-top:20px;
+padding:10px 25px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-  transform:scale(1.1);
+transform:scale(1.1);
+}
+
+.gallery{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.gallery img{
+width:120px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+video{
+width:220px;
+border-radius:15px;
+margin-top:10px;
 }
 
 .heart{
-  position:fixed;
-  top:-10px;
-  animation:fall 6s linear infinite;
+position:fixed;
+top:-10px;
+animation:fall 6s linear infinite;
 }
 
 @keyframes fall{
-  0%{transform:translateY(-10vh);opacity:1;}
-  100%{transform:translateY(110vh);opacity:0;}
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
 }
 
-.spotify{
-  margin-top:20px;
+#countdown{
+margin-top:15px;
+font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>Happy Valentine kamu 💘</h1>
+<div id="loading">For Pana 💌</div>
 
-  <div class="gallery">
-    <img src="IMG-20251101-WA0457.jpg">
-    <img src="IMG-20250907-WA0503.jpg">
-    <img src="IMG-20250909-WA0444.jpg">
-  </div>
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide1">
+<h1>for <span>Pana</span> 💖</h1>
+<p id="typing"></p>
+<button onclick="nextSlide()">tap next ➜</button>
+</div>
 
-  <p id="text">
-    serius deh... aku bersyukur banget bisa kenal kamu 🥺
-  </p>
+<!-- SLIDE 2 -->
+<div class="slide" id="slide2">
+<h1>our memories 📸</h1>
 
-  <button onclick="nextText()">pencet sini 😌</button>
+<div class="gallery">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
 
-  <div class="spotify">
-    <iframe style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/1E7zLPDdqo0OvzVmGj5aoV"
-    width="300"
-    height="80"
-    frameBorder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
-  </div>
+<video controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<button onclick="nextSlide()">next ➜</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide3">
+<h1>happy valentine 💘</h1>
+<p>
+selamat hari valentine yaa.  
+almost one year… and i still choose you. always.
+</p>
+<div id="countdown"></div>
 </div>
 
 <script>
-const texts = [
-"serius deh... aku bersyukur banget bisa kenal kamu 🥺",
-"kamu tuh bikin hari aku jadi lebih warna-warni.",
-"masih muda sih, tapi rasa aku ke kamu tulus banget.",
-"i'm lucky to have you 💖",
-"stay sama aku terus ya, jangan ilang 😌"
-];
+let current=1;
 
-let index = 0;
+function nextSlide(){
+document.getElementById("slide"+current).classList.remove("active");
+current++;
+if(current>3) current=1;
+document.getElementById("slide"+current).classList.add("active");
 
-function nextText(){
-  index++;
-  if(index >= texts.length) index = 0;
-  document.getElementById("text").innerText = texts[index];
+if(current==2){
+document.getElementById("music").play();
+}
 }
 
+// TYPEWRITER
+const text="seriously… makasih banget ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,35);
+}
+}
+type();
+
+// HEART ANIMATION
 function fallingHeart(){
-  const heart = document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="💖";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(15+Math.random()*25)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
 }
-
 setInterval(fallingHeart,800);
+
+// COUNTDOWN
+const targetDate=new Date("May 5, 2026 00:00:00").getTime();
+setInterval(function(){
+const now=new Date().getTime();
+const distance=targetDate-now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML=
+"menuju 1 tahun kita:<br>"+days+" hari "+
+hours+" jam "+minutes+" menit "+seconds+" detik 💖";
+},1000);
 </script>
 
 </body>
