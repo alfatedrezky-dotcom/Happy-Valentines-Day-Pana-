@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Love Story 💖</title>
+<title>For My Favorite Person 💖</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
@@ -15,8 +15,8 @@
 }
 
 body{
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top left, #ff4e88, #ff0066, #ff85b3);
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff4e88,#ff0066,#ff85b3);
   color:white;
   overflow:hidden;
 }
@@ -36,39 +36,30 @@ body{
 
 .card{
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   padding:25px;
   border-radius:25px;
   text-align:center;
-  box-shadow:0 0 40px rgba(255,255,255,0.3);
-  max-width:320px;
+  box-shadow:0 0 30px rgba(0,0,0,0.2);
+  max-width:330px;
 }
 
 .card img{
   width:100%;
   border-radius:20px;
   margin-bottom:15px;
-  box-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
 h1{
-  font-size:26px;
   margin-bottom:10px;
-}
-
-p{
-  font-size:15px;
-  line-height:1.6;
 }
 
 .counter{
   margin-top:15px;
   font-weight:bold;
-  font-size:18px;
-  color:#fff;
 }
 
-.floating-hearts{
+.hearts{
   position:absolute;
   width:100%;
   height:100%;
@@ -79,7 +70,7 @@ p{
 .heart{
   position:absolute;
   color:white;
-  opacity:0.4;
+  opacity:0.3;
   animation:float 8s linear infinite;
 }
 
@@ -92,7 +83,7 @@ p{
 
 <body>
 
-<div class="floating-hearts"></div>
+<div class="hearts"></div>
 
 <div class="swiper">
   <div class="swiper-wrapper">
@@ -101,7 +92,7 @@ p{
       <div class="card">
         <h1>Hai Cantik 💕</h1>
         <p>
-          Ga nyangka ya kita masih bareng sampe sekarang…
+          Ga nyangka kita masih bareng sampe sekarang…
           still strong, still crazy, still us 😌💖
         </p>
       </div>
@@ -111,7 +102,7 @@ p{
       <div class="card">
         <img src="IMG-20251101-WA0457.jpg">
         <p>
-          Setiap momen sama kamu tuh vibes nya beda banget.
+          Setiap momen sama kamu tuh beda banget vibes nya.
           Dunia auto slow motion tiap liat kamu 😆✨
         </p>
       </div>
@@ -122,7 +113,7 @@ p{
         <img src="IMG-20250907-WA0503.jpg">
         <p>
           Makasih ya udah stay,
-          walaupun aku kadang ngeselin dikit 🤏😂
+          walaupun aku kadang ngeselin 🤏😂
           but you still choose me.
         </p>
       </div>
@@ -144,9 +135,8 @@ p{
         <h1>I Love You 💗</h1>
         <p>
           Ga perlu janji lebay.
-          Yang penting kita tetap bareng,
-          support each other, stay loyal,
-          and keep choosing each other every day 💕
+          Yang penting kita tetep bareng,
+          support each other & stay loyal 💕
         </p>
 
         <br>
@@ -179,9 +169,9 @@ const diffDays = Math.floor(diffTime / (1000*60*60*24));
 document.getElementById("counter").innerHTML =
 "Udah bareng " + diffDays + " hari dan masih jalan terus 💕🔥";
 
-const container = document.querySelector(".floating-hearts");
+const container = document.querySelector(".hearts");
 for(let i=0;i<25;i++){
-  let heart = document.createElement("div");
+  let heart=document.createElement("div");
   heart.className="heart";
   heart.innerHTML="❤";
   heart.style.left=Math.random()*100+"vw";
