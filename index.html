@@ -3,64 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>buat kamu 💕</title>
+<title>Happy Valentine 💖</title>
 
 <style>
-body{
+*{
   margin:0;
   padding:0;
-  font-family:'Comic Sans MS', cursive;
-  background: linear-gradient(135deg,#ffd6ec,#ffe9f6,#d6f0ff);
-  background-size:300% 300%;
-  animation:bg 8s infinite alternate;
-  overflow:hidden;
-  text-align:center;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
 }
 
-@keyframes bg{
+body{
+  background: linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
+  background-size:300% 300%;
+  animation:bgMove 8s infinite alternate;
+  text-align:center;
+  color:white;
+  overflow-x:hidden;
+}
+
+@keyframes bgMove{
   0%{background-position:0% 50%;}
   100%{background-position:100% 50%;}
 }
 
 .container{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-
-img{
-  width:220px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  animation:goyang 3s infinite ease-in-out;
-}
-
-@keyframes goyang{
-  0%,100%{transform:rotate(-2deg);}
-  50%{transform:rotate(2deg);}
+  padding:30px 20px;
 }
 
 h1{
-  color:#ff4fa3;
-  margin-top:20px;
+  margin-bottom:15px;
+}
+
+.gallery{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.gallery img{
+  width:150px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1);
 }
 
 p{
-  max-width:300px;
-  color:#ff4fa3;
+  max-width:320px;
+  margin:0 auto 15px;
   line-height:1.6;
 }
 
 button{
-  margin-top:15px;
   padding:10px 25px;
   border:none;
-  border-radius:25px;
-  background:#ff8acb;
-  color:white;
+  border-radius:30px;
+  background:white;
+  color:#ff4d6d;
   font-weight:bold;
   cursor:pointer;
   transition:0.3s;
@@ -70,16 +75,19 @@ button:hover{
   transform:scale(1.1);
 }
 
-/* floating heart */
 .heart{
-  position:absolute;
-  color:#ff69b4;
-  animation:naik 6s linear infinite;
+  position:fixed;
+  top:-10px;
+  animation:fall 6s linear infinite;
 }
 
-@keyframes naik{
-  0%{transform:translateY(100vh);opacity:1;}
-  100%{transform:translateY(-10vh);opacity:0;}
+@keyframes fall{
+  0%{transform:translateY(-10vh);opacity:1;}
+  100%{transform:translateY(110vh);opacity:0;}
+}
+
+.spotify{
+  margin-top:20px;
 }
 </style>
 </head>
@@ -87,36 +95,50 @@ button:hover{
 <body>
 
 <div class="container">
-  <img src="foto.jpg" alt="foto kamu">
+  <h1>Happy Valentine kamu 💘</h1>
 
-  <h1>eh kamu 🫵😌</h1>
+  <div class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
 
   <p id="text">
-    serius deh, kamu tuh gemes banget.
-    tiap liat foto ini aku senyum sendiri 😭💕
+    serius deh... aku bersyukur banget bisa kenal kamu 🥺
   </p>
 
-  <button onclick="gantiText()">pencet dong 🥺</button>
+  <button onclick="nextText()">pencet sini 😌</button>
+
+  <div class="spotify">
+    <iframe style="border-radius:12px"
+    src="https://open.spotify.com/embed/track/1E7zLPDdqo0OvzVmGj5aoV"
+    width="300"
+    height="80"
+    frameBorder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
 </div>
 
 <script>
-const kata = [
-"kamu tuh gemes banget. aku ga bohong.",
-"aku tau kita masih muda, tapi rasa aku ke kamu real sih.",
-"kalau kamu lagi capek, sini aku peluk virtual dulu 🤗",
-"i'm lucky banget bisa kenal kamu.",
-"jangan kemana-mana ya, stay sama aku terus."
+const texts = [
+"serius deh... aku bersyukur banget bisa kenal kamu 🥺",
+"kamu tuh bikin hari aku jadi lebih warna-warni.",
+"masih muda sih, tapi rasa aku ke kamu tulus banget.",
+"i'm lucky to have you 💖",
+"stay sama aku terus ya, jangan ilang 😌"
 ];
 
-let i = 0;
+let index = 0;
 
-function gantiText(){
-  i++;
-  if(i >= kata.length) i = 0;
-  document.getElementById("text").innerText = kata[i];
+function nextText(){
+  index++;
+  if(index >= texts.length) index = 0;
+  document.getElementById("text").innerText = texts[index];
 }
 
-function hati(){
+function fallingHeart(){
   const heart = document.createElement("div");
   heart.className="heart";
   heart.innerHTML="💖";
@@ -126,7 +148,7 @@ function hati(){
   setTimeout(()=>heart.remove(),6000);
 }
 
-setInterval(hati,800);
+setInterval(fallingHeart,800);
 </script>
 
 </body>
