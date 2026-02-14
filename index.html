@@ -169,8 +169,8 @@ font-weight:600;
 </div>
 </div>
 
-<audio id="music" loop>
-<source src="Glenn Fredly - Kasih Putih Official Audio.mp3" type="audio/mp3">
+<audio id="music" loop preload="auto">
+<source src="kasihputih.mp3" type="audio/mp3">
 </audio>
 
 </div>
@@ -185,70 +185,71 @@ font-weight:600;
 </div>
 
 <script>
-const container=document.getElementById("container");
-const progress=document.getElementById("progress");
-const music=document.getElementById("music");
+const container = document.getElementById("container");
+const progress = document.getElementById("progress");
+const music = document.getElementById("music");
 
-let musicStarted=false;
+let musicStarted = false;
 
-/* FADE IN MUSIC */
+/* FADE IN AUDIO */
 function fadeInAudio(){
-music.volume=0;
-music.play().catch(()=>{});
-let vol=0;
-let fade=setInterval(()=>{
-if(vol<1){
-vol+=0.05;
-music.volume=vol;
-}else{
-clearInterval(fade);
-}
-},200);
-}
-
-/* START MUSIC SAAT INTERAKSI PERTAMA */
-function startMusicOnce(){
-if(!musicStarted){
-fadeInAudio();
-musicStarted=true;
-}
+    music.volume = 0;
+    music.play().then(()=>{
+        let vol = 0;
+        const fade = setInterval(()=>{
+            if(vol < 1){
+                vol += 0.05;
+                music.volume = vol;
+            } else {
+                clearInterval(fade);
+            }
+        },200);
+    }).catch(()=>{});
 }
 
-container.addEventListener("scroll",startMusicOnce);
-container.addEventListener("touchstart",startMusicOnce);
-container.addEventListener("click",startMusicOnce);
+/* UNLOCK AUDIO VIA GESTURE */
+function unlockAudio(){
+    if(!musicStarted){
+        fadeInAudio();
+        musicStarted = true;
+    }
+}
+
+document.body.addEventListener("touchstart", unlockAudio, { once:true });
+document.body.addEventListener("click", unlockAudio, { once:true });
 
 /* PROGRESS */
-container.addEventListener("scroll",()=>{
-let slide=Math.round(container.scrollLeft/window.innerWidth)+1;
-progress.style.width=(slide/3*100)+"%";
+container.addEventListener("scroll", ()=>{
+    let slide = Math.round(container.scrollLeft / window.innerWidth) + 1;
+    progress.style.width = (slide / 3 * 100) + "%";
 });
 
 /* TYPEWRITER */
 const text="makasih ya udah nerima aku dan mau ngejalanin hubungan ini bareng aku. i’m really grateful to have you. you mean so much to me 🤍";
 let i=0;
 function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,35);
-}
+    if(i<text.length){
+        document.getElementById("typing").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(type,35);
+    }
 }
 type();
 
 /* COUNTDOWN */
 const targetDate=new Date("May 5, 2026 00:00:00").getTime();
 setInterval(function(){
-const now=new Date().getTime();
-const distance=targetDate-now;
+    const now=new Date().getTime();
+    const distance=targetDate-now;
 
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-const seconds=Math.floor((distance%(1000*60))/1000);
+    const days=Math.floor(distance/(1000*60*60*24));
+    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+    const seconds=Math.floor((distance%(1000*60))/1000);
 
-document.getElementById("countdown").innerHTML=
-days+" hari "+hours+" jam "+minutes+" menit "+seconds+" detik 💖";
+    document.getElementById("countdown").innerHTML=
+    days+" hari "+hours+" jam "+
+    minutes+" menit "+seconds+" detik 💖";
 },1000);
 </script>
 
